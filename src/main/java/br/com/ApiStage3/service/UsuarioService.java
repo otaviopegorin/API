@@ -34,7 +34,7 @@ public class UsuarioService {
 	}
 	
 	public UsuarioDTO getUsuarioById(Integer id) {
-		Usuario usuario = usuarioRepository.buscarUsuarioPeloId(id);
+		Usuario usuario = usuarioRepository.getById(id);
 		UsuarioDTO usuarioDTO = usuario.toUsuarioDTO();
 		return usuarioDTO;
 	}
@@ -54,7 +54,7 @@ public class UsuarioService {
 	public int autenticaUsuario(String email, String senha) {
 		try {
 			System.out.println("email: "+email+" senha: "+senha);
-			Usuario usuario = usuarioRepository.getUsuarioByEmail(email);
+			Usuario usuario = usuarioRepository.findByEmail(email);
 			System.out.println(usuario);
 			String strHash = codificaSenha(senha);
 			if(strHash.equals(usuario.getSenha())) {
@@ -91,7 +91,7 @@ public class UsuarioService {
 	}
 	
 	public String recuperaSenha(String email) {
-		Usuario usuario = usuarioRepository.getUsuarioByEmail(email);
+		Usuario usuario = usuarioRepository.findByEmail(email);
 		if(usuario == null) {
 			return "Email não cadastrado";
 		}
