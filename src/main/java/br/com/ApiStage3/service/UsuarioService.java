@@ -52,16 +52,22 @@ public class UsuarioService {
 	}
 
 	public int autenticaUsuario(String email, String senha) {
-		Usuario usuario = usuarioRepository.getUsuarioByEmail(email);
-		String strHash = codificaSenha(senha);
-		if(strHash.equals(usuario.getSenha())) {
-			if(usuario.getRecuperarSenha() == true) {
-				return -1;
+		try {
+			Usuario usuario = usuarioRepository.getUsuarioByEmail(email);
+			String strHash = codificaSenha(senha);
+			if(strHash.equals(usuario.getSenha())) {
+				if(usuario.getRecuperarSenha() == true) {
+					return -1;
+				}
+				return 1;
+			}else {
+				return 0;
 			}
-			return 1;
-		}else {
-			return 0;
+		}catch(Exception e) {
+			System.out.println(e.toString());
+			return -2;
 		}
+		
 	}
 	
 	public String codificaSenha(String senhaParam) {
