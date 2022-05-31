@@ -53,7 +53,9 @@ public class UsuarioService {
 
 	public int autenticaUsuario(String email, String senha) {
 		try {
+			System.out.println("email: "+email+" senha: "+senha);
 			Usuario usuario = usuarioRepository.getUsuarioByEmail(email);
+			System.out.println(usuario);
 			String strHash = codificaSenha(senha);
 			if(strHash.equals(usuario.getSenha())) {
 				if(usuario.getRecuperarSenha() == true) {
