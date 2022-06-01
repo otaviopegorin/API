@@ -116,6 +116,7 @@ public class UsuarioService {
 	}
 	
 	public boolean cadastroNovaSenha(String email,String senha) {
+		System.out.println("Email: "+email+" Senha: "+senha);
 		try {
 			Usuario usuario = usuarioRepository.findByEmail(email);
 			if(!usuario.getRecuperarSenha()) {
