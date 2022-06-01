@@ -90,10 +90,10 @@ public class UsuarioService {
 		return strHash;
 	}
 	
-	public String recuperaSenha(String email) {
+	public int recuperaSenha(String email) {
 		Usuario usuario = usuarioRepository.findByEmail(email);
 		if(usuario == null) {
-			return "Email não cadastrado";
+			return 0;
 		}
 		usuario.setRecuperarSenha(true);
 		UUID uuid = UUID.randomUUID();
@@ -109,10 +109,10 @@ public class UsuarioService {
         usuarioRepository.save(usuario);
         try {
             mailSender.send(message);
-            return "Email enviado com sucesso!";
+            return 1;
         } catch (Exception e) {
             e.printStackTrace();
-            return "Erro ao enviar email.";
+            return -1;
         }
 		
 	}

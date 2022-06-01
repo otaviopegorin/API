@@ -44,7 +44,8 @@ public class UsuarioController {
 //	    "email":"Otaviogmail",
 //	    "senha":"123",
 //	    "telefone":"2932983",
-//	    "adm":true
+//	    "adm":true,
+//		"recuperarsenha":false
 //	}
 	
 	@CrossOrigin
@@ -55,7 +56,7 @@ public class UsuarioController {
 	
 	@CrossOrigin
 	@PostMapping("/recuperaSenha")
-	public String recuperarSenha(@RequestBody Usuario usuario){
+	public int recuperarSenha(@RequestBody Usuario usuario){
 		return usuarioService.recuperaSenha(usuario.getEmail());
 	}
 }
