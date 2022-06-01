@@ -59,4 +59,10 @@ public class UsuarioController {
 	public int recuperarSenha(@RequestBody Usuario usuario){
 		return usuarioService.recuperaSenha(usuario.getEmail());
 	}
+	
+	@CrossOrigin
+	@PostMapping("/cadastroNovaSenha")
+	public boolean cadastroNovaSenha(@RequestBody Usuario usuario){
+		return usuarioService.cadastroNovaSenha(usuario.getEmail(),usuario.getSenha());
+	}
 }

@@ -53,9 +53,7 @@ public class UsuarioService {
 
 	public int autenticaUsuario(String email, String senha) {
 		try {
-			System.out.println("email: "+email+" senha: "+senha);
 			Usuario usuario = usuarioRepository.findByEmail(email);
-			System.out.println(usuario);
 			String strHash = codificaSenha(senha);
 			if(strHash.equals(usuario.getSenha())) {
 				if(usuario.getRecuperarSenha() == true) {
@@ -114,6 +112,23 @@ public class UsuarioService {
             e.printStackTrace();
             return -1;
         }
+		
+	}
+	
+	public boolean cadastroNovaSenha(String email,String senha) {
+		try {
+			Usuario usuario = usuarioRepository.findByEmail(email);
+			if(!usuario.getRecuperarSenha()) {
+				return false;
+			}
+			usuario.setSenha(codificaSenha(senha));
+			usuario.setRecuperarSenha(false);
+			usuarioRepository.save(usuario);
+			return true;
+		}catch(Exception e) {
+			System.out.println(e.toString());
+			return false;
+		}
 		
 	}
 }
