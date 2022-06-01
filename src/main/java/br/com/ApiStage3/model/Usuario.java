@@ -43,10 +43,12 @@ public class Usuario {
 		this.recuperarSenha = false;
 	}
 	
-	public Usuario(String nome, String email, String senha) {
+	public Usuario(String nome, String email, String senha,boolean recuperarsenha, boolean adm) {
 		this.nome = nome;
 		this.email= email;
 		this.senha=senha;
+		this.recuperarSenha = recuperarsenha;
+		this.adm = adm;
 	}
 	
 	public Boolean getRecuperarSenha() {
