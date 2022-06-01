@@ -32,7 +32,7 @@ public class Usuario {
 	public Usuario() {
 	}
 
-	public Usuario(List<Estagio> estagios, String nome, String email, String senha, String telefone, Boolean adm) {
+	public Usuario(List<Estagio> estagios, String nome, String email, String senha, String telefone, Boolean adm, Boolean recuperarSenha) {
 		super();
 		this.estagios = estagios;
 		this.nome = nome;
@@ -40,10 +40,10 @@ public class Usuario {
 		this.senha = senha;
 		this.telefone = telefone;
 		this.adm = adm;
-		this.recuperarSenha = false;
+		this.recuperarSenha = recuperarSenha;
 	}
 	
-	public Usuario(String nome, String email, String senha,boolean recuperarsenha, boolean adm) {
+	public Usuario(String nome, String email, String senha,Boolean recuperarsenha, Boolean adm) {
 		this.nome = nome;
 		this.email= email;
 		this.senha=senha;
