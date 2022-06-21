@@ -20,20 +20,17 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioService usuarioService;
 
-	@CrossOrigin
 	@GetMapping("/usuarios")
 	public List<UsuarioDTO> getAllUsuarios() {
 		return usuarioService.getAllUsuarios();
 	}
 	
-	@CrossOrigin
 	@GetMapping(value="/getUsuarioById/{id}")
 	public UsuarioDTO getUsuarioById(@PathVariable("id") Integer id){
 		UsuarioDTO usuarioDTO = usuarioService.getUsuarioById(id);
 		return usuarioDTO;
 	}
 	
-	@CrossOrigin
 	@PostMapping("/criarUsuario")
 	public Boolean criaUsuario(@RequestBody Usuario usuario) {
 		return usuarioService.salvaUsuario(usuario);
@@ -48,19 +45,16 @@ public class UsuarioController {
 //		"recuperarsenha":false
 //	}
 	
-	@CrossOrigin
 	@PostMapping("/autenticarUsuario")
 	public int autenticaUsuario(@RequestBody Usuario usuario) {
 		return usuarioService.autenticaUsuario(usuario.getEmail(),usuario.getSenha());
 	}
 	
-	@CrossOrigin
 	@PostMapping("/recuperaSenha")
 	public int recuperarSenha(@RequestBody Usuario usuario){
 		return usuarioService.recuperaSenha(usuario.getEmail());
 	}
 	
-	@CrossOrigin
 	@PostMapping("/cadastroNovaSenha")
 	public boolean cadastroNovaSenha(@RequestBody Usuario usuario){
 		return usuarioService.cadastroNovaSenha(usuario.getEmail(),usuario.getSenha());
