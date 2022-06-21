@@ -4,11 +4,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import br.com.ApiStage3.model.Usuario;
@@ -18,8 +15,7 @@ import br.com.ApiStage3.repository.UsuarioRepository;
 
 @Service
 public class UsuarioService {
-//	@Autowired(required = true)
-//	private JavaMailSender mailSender;
+
 	
 	@Autowired(required = true)
 	private UsuarioRepository usuarioRepository;
