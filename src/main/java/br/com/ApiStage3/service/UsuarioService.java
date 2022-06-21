@@ -18,8 +18,8 @@ import br.com.ApiStage3.repository.UsuarioRepository;
 
 @Service
 public class UsuarioService {
-	@Autowired(required = true)
-	private JavaMailSender mailSender;
+//	@Autowired(required = true)
+//	private JavaMailSender mailSender;
 	
 	@Autowired(required = true)
 	private UsuarioRepository usuarioRepository;
@@ -88,32 +88,32 @@ public class UsuarioService {
 		return strHash;
 	}
 	
-	public int recuperaSenha(String email) {
-		Usuario usuario = usuarioRepository.findByEmail(email);
-		if(usuario == null) {
-			return 0;
-		}
-		usuario.setRecuperarSenha(true);
-		UUID uuid = UUID.randomUUID();
-		String senhaTemporaria = codificaSenha(uuid.toString());
-		usuario.setSenha(senhaTemporaria);
-		SimpleMailMessage message = new SimpleMailMessage();
-		message.setSubject("Email de recuperação de senha");
-        message.setText("Email para recuperação da conta"
-        		+ "\n Para Recuperar sua conta tente entrar novamente"
-        		+ "\n usando a seguinte senha: "+uuid.toString());
-        message.setTo(email);
-        message.setFrom("grupoStage3Tcc@gmail.com");
-        usuarioRepository.save(usuario);
-        try {
-            mailSender.send(message);
-            return 1;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return -1;
-        }
-		
-	}
+//	public int recuperaSenha(String email) {
+//		Usuario usuario = usuarioRepository.findByEmail(email);
+//		if(usuario == null) {
+//			return 0;
+//		}
+//		usuario.setRecuperarSenha(true);
+//		UUID uuid = UUID.randomUUID();
+//		String senhaTemporaria = codificaSenha(uuid.toString());
+//		usuario.setSenha(senhaTemporaria);
+//		SimpleMailMessage message = new SimpleMailMessage();
+//		message.setSubject("Email de recuperação de senha");
+//        message.setText("Email para recuperação da conta"
+//        		+ "\n Para Recuperar sua conta tente entrar novamente"
+//        		+ "\n usando a seguinte senha: "+uuid.toString());
+//        message.setTo(email);
+//        message.setFrom("grupoStage3Tcc@gmail.com");
+//        usuarioRepository.save(usuario);
+//        try {
+//            mailSender.send(message);
+//            return 1;
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return -1;
+//        }
+//		
+//	}
 	
 	public boolean cadastroNovaSenha(String email,String senha) {
 		System.out.println("Email: "+email+" Senha: "+senha);

@@ -54,11 +54,11 @@ public class UsuarioController {
 		return usuarioService.autenticaUsuario(usuario.getEmail(),usuario.getSenha());
 	}
 	
-	@CrossOrigin
-	@PostMapping("/recuperaSenha")
-	public int recuperarSenha(@RequestBody Usuario usuario){
-		return usuarioService.recuperaSenha(usuario.getEmail());
-	}
+//	@CrossOrigin
+//	@PostMapping("/recuperaSenha")
+//	public int recuperarSenha(@RequestBody Usuario usuario){
+//		return usuarioService.recuperaSenha(usuario.getEmail());
+//	}
 	
 	@CrossOrigin
 	@PostMapping("/cadastroNovaSenha")
