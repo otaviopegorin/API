@@ -37,7 +37,7 @@ public class UsuarioController {
 	@PostMapping("/criarUsuario")
 	public Boolean criaUsuario(@RequestBody Usuario usuario) {
 		return usuarioService.salvaUsuario(usuario);
-	}
+	} 
 //	{
 //	    "estagios":[],
 //	    "nome":"Otavio",
