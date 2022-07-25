@@ -4,8 +4,13 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
+
+import javax.mail.internet.MimeMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 import br.com.ApiStage3.model.Usuario;
@@ -16,6 +21,8 @@ import br.com.ApiStage3.repository.UsuarioRepository;
 @Service
 public class UsuarioService {
 
+	@Autowired
+    private JavaMailSender mailSender;
 	
 	@Autowired(required = true)
 	private UsuarioRepository usuarioRepository;
@@ -84,32 +91,38 @@ public class UsuarioService {
 		return strHash;
 	}
 	
-//	public int recuperaSenha(String email) {
-//		Usuario usuario = usuarioRepository.findByEmail(email);
-//		if(usuario == null) {
-//			return 0;
-//		}
-//		usuario.setRecuperarSenha(true);
-//		UUID uuid = UUID.randomUUID();
-//		String senhaTemporaria = codificaSenha(uuid.toString());
-//		usuario.setSenha(senhaTemporaria);
-//		SimpleMailMessage message = new SimpleMailMessage();
-//		message.setSubject("Email de recuperação de senha");
-//        message.setText("Email para recuperação da conta"
-//        		+ "\n Para Recuperar sua conta tente entrar novamente"
-//        		+ "\n usando a seguinte senha: "+uuid.toString());
-//        message.setTo(email);
-//        message.setFrom("grupoStage3Tcc@gmail.com");
-//        usuarioRepository.save(usuario);
-//        try {
-//            mailSender.send(message);
-//            return 1;
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return -1;
-//        }
-//		
-//	}
+	public int recuperaSenha(String email) {
+		Usuario usuario = usuarioRepository.findByEmail(email);
+		if(usuario == null) {
+			return 0;
+		}
+		usuario.setRecuperarSenha(true);
+		UUID uuid = UUID.randomUUID();
+		String senhaTemporaria = codificaSenha(uuid.toString());
+		usuario.setSenha(senhaTemporaria);
+		
+		
+		String from = "grupoStage3Tcc@gmail.com";
+		String to = email;
+		 
+		MimeMessage message = mailSender.createMimeMessage();
+		MimeMessageHelper helper = new MimeMessageHelper(message);
+        try {
+        	helper.setSubject("This is an HTML email");
+    		helper.setFrom(from);
+    		helper.setTo(to);
+    		 
+    		boolean html = true;
+    		helper.setText("<b>Hello guys</b>,<br><i>Esse é um email automatico</i><br><p>Para cadastrar uma nova senha basta se logar no app usando a seguinte senha:"+uuid.toString()+"</p>", html);
+    		 
+    		mailSender.send(message);
+    		usuarioRepository.save(usuario);
+            return 1;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
+        }
+	}
 	
 	public boolean cadastroNovaSenha(String email,String senha) {
 		System.out.println("Email: "+email+" Senha: "+senha);
