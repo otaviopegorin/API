@@ -48,10 +48,10 @@ public class UsuarioController {
 		return usuarioService.autenticaUsuario(usuario.getEmail(),usuario.getSenha());
 	}
 	
-//	@PostMapping("/recuperaSenha")
-//	public int recuperarSenha(@RequestBody Usuario usuario){
-//		return usuarioService.recuperaSenha(usuario.getEmail());
-//	}
+	@PostMapping("/recuperaSenha")
+	public int recuperarSenha(@RequestBody Usuario usuario){
+		return usuarioService.recuperaSenha(usuario.getEmail());
+	}
 	@PostMapping("/cadastroNovaSenha")
 	public boolean cadastroNovaSenha(@RequestBody Usuario usuario){
 		return usuarioService.cadastroNovaSenha(usuario.getEmail(),usuario.getSenha());
