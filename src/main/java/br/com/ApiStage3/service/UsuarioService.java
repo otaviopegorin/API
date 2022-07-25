@@ -113,8 +113,7 @@ public class UsuarioService {
     		helper.setTo(to);
     		 
     		boolean html = true;
-    		helper.setText("<img src=\"https://www.conviverurbanismo.com.br/wp-content/themes/conviverurbanismo/assets/images/email_sent.svg?%3E\">"
-    				+ "<b>Hello guys</b>,"
+    		helper.setText("<b>Hello guys</b>,"
     				+ "<br><i>Esse é um email automatico</i><br><p>Para cadastrar uma nova senha basta se logar no app usando a seguinte senha:</p><br><p>"+uuid.toString()+"</p>", html);
     		 
     		mailSender.send(message);
