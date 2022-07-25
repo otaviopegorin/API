@@ -108,12 +108,14 @@ public class UsuarioService {
 		MimeMessage message = mailSender.createMimeMessage();
 		MimeMessageHelper helper = new MimeMessageHelper(message);
         try {
-        	helper.setSubject("This is an HTML email");
+        	helper.setSubject("Email para recuperação de senha");
     		helper.setFrom(from);
     		helper.setTo(to);
     		 
     		boolean html = true;
-    		helper.setText("<b>Hello guys</b>,<br><i>Esse é um email automatico</i><br><p>Para cadastrar uma nova senha basta se logar no app usando a seguinte senha:"+uuid.toString()+"</p>", html);
+    		helper.setText("<img src='https://www.conviverurbanismo.com.br/wp-content/themes/conviverurbanismo/assets/images/email_sent.svg?%3E'>"
+    				+ "<b>Hello guys</b>,"
+    				+ "<br><i>Esse é um email automatico</i><br><p>Para cadastrar uma nova senha basta se logar no app usando a seguinte senha:</p><br><p>"+uuid.toString()+"</p>", html);
     		 
     		mailSender.send(message);
     		usuarioRepository.save(usuario);
