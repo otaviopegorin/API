@@ -2,28 +2,28 @@ package br.com.ApiStage3.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import org.hibernate.annotations.GenericGenerator;
-
-@Entity(name = "PEGORIN_Usuario")
+@Entity(name = "Usuario")
 public class Usuario {
 
 	@Id
-	@GeneratedValue(generator = "increment")
-	@GenericGenerator(name ="increment",strategy="increment")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id_usuario;
-	@OneToMany(mappedBy = "usuario")
-	private List<Estagio> estagios;
 	private String nome;
 	@Column(unique = true)
 	private String email;
-	private String senha;
+	@OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+	private List<Venda> pedidos;
+	private String senha; 
 	private String telefone;
 	private Boolean recuperarSenha;
 	private Boolean adm;
@@ -32,9 +32,8 @@ public class Usuario {
 	public Usuario() {
 	}
 
-	public Usuario(List<Estagio> estagios, String nome, String email, String senha, String telefone, Boolean adm, Boolean recuperarSenha) {
+	public Usuario( String nome, String email, String senha, String telefone, Boolean adm, Boolean recuperarSenha) {
 		super();
-		this.estagios = estagios;
 		this.nome = nome;
 		this.email = email;
 		this.senha = senha;
@@ -74,14 +73,6 @@ public class Usuario {
 
 	public void setId_usuario(Integer id_usuario) {
 		this.id_usuario = id_usuario;
-	}
-
-	public List<Estagio> getEstagios() {
-		return estagios;
-	}
-
-	public void setEstagios(List<Estagio> estagios) {
-		this.estagios = estagios;
 	}
 
 
@@ -134,7 +125,7 @@ public class Usuario {
 	}
 
 	public UsuarioDTO toUsuarioDTO() {
-		UsuarioDTO usuarioDTO = new UsuarioDTO(this.getNome(), this.getEmail(), this.getTelefone(),this.getEstagios());
+		UsuarioDTO usuarioDTO = new UsuarioDTO(this.getNome(), this.getEmail(), this.getTelefone());
 		return usuarioDTO;
 	}
 
