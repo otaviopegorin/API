@@ -20,8 +20,7 @@ public class Produto {
 	@Column(unique = true)
 	private String nome;
 	private BigInteger preco;
-	@Enumerated(EnumType.STRING)
-	private CategoriaProduto categoria;
+	private String categoria;
 	private String descricao;
 	private int qtd_estoque;
 	private Boolean excluido;
@@ -30,7 +29,17 @@ public class Produto {
 
 	public Produto() {
 	}
-	public Produto(Integer id_produto, String nome, BigInteger preco, CategoriaProduto categoria, String descricao,
+	
+	public Produto(String nome, BigInteger preco, String categoria, String descricao, int qtd_estoque) {
+		super();
+		this.nome = nome;
+		this.preco = preco;
+		this.categoria = categoria;
+		this.descricao = descricao;
+		this.qtd_estoque = qtd_estoque;
+	}
+
+	public Produto(Integer id_produto, String nome, BigInteger preco, String categoria, String descricao,
 			int qtd_estoque, Boolean excluido, Date data_excluido, String img_produto) {
 		super();
 		this.id_produto = id_produto;
@@ -68,11 +77,11 @@ public class Produto {
 		this.preco = preco;
 	}
 
-	public CategoriaProduto getCategoria() {
+	public String getCategoria() {
 		return categoria;
 	}
 
-	public void setCategoria(CategoriaProduto categoria) {
+	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
 

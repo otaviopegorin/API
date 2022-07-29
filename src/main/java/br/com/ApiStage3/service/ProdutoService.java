@@ -56,4 +56,14 @@ public class ProdutoService {
 		}
 		return false;
 	}
+
+	public Boolean salvaUsuario(Produto produto) {
+		try {
+			produtoRepository.save(produto);
+			return true;
+		}catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 }

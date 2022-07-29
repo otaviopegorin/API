@@ -5,8 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.ApiStage3.model.Produto;
 import br.com.ApiStage3.model.ProdutoDTO;
 import br.com.ApiStage3.service.ProdutoService;
 
@@ -30,4 +33,9 @@ public class ProdutoController {
 	public List<ProdutoDTO> getProdutoByCategoria(@PathVariable("categoria") String categoria) {
 		return produtoService.getByCategoria(categoria);
 	}
+	
+	@PostMapping("/criarProduto")
+	public Boolean criaUsuario(@RequestBody Produto produto) {
+		return produtoService.salvaUsuario(produto);
+	} 
 }

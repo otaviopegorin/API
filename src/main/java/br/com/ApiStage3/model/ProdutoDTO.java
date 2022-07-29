@@ -7,14 +7,14 @@ public class ProdutoDTO {
 
 	private String nome;
 	private BigInteger preco;
-	private CategoriaProduto categoria;
+	private String categoria;
 	private String descricao;
 	private int qtd_estoque;
 	private Boolean excluido;
 	private Date data_excluido;
 	private String img_produto;
 
-	public ProdutoDTO(String nome, BigInteger preco, CategoriaProduto categoria, String descricao, int qtd_estoque,
+	public ProdutoDTO(String nome, BigInteger preco, String categoria, String descricao, int qtd_estoque,
 			Boolean excluido, Date data_excluido, String img_produto) {
 		super();
 		this.nome = nome;
@@ -43,11 +43,11 @@ public class ProdutoDTO {
 		this.preco = preco;
 	}
 
-	public CategoriaProduto getCategoria() {
+	public String getCategoria() {
 		return categoria;
 	}
 
-	public void setCategoria(CategoriaProduto categoria) {
+	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
 
