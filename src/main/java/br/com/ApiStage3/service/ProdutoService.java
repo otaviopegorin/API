@@ -57,7 +57,7 @@ public class ProdutoService {
 		return false;
 	}
 
-	public Boolean salvaUsuario(Produto produto) {
+	public Boolean salvarProduto(Produto produto) {
 		try {
 			produtoRepository.save(produto);
 			return true;

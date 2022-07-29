@@ -3,6 +3,7 @@ package br.com.ApiStage3.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +15,7 @@ import br.com.ApiStage3.model.ProdutoDTO;
 import br.com.ApiStage3.service.ProdutoService;
 
 @RestController()
+@CrossOrigin()
 public class ProdutoController {
 
 	@Autowired
@@ -36,6 +38,7 @@ public class ProdutoController {
 	
 	@PostMapping("/criarProduto")
 	public Boolean criaUsuario(@RequestBody Produto produto) {
-		return produtoService.salvaUsuario(produto);
+		System.out.println("nome "+produto.getNome()+" preco "+produto.getPreco()+" categoria "+produto.getCategoria()+" descricao "+produto.getDescricao()+" estoque "+produto.getQtd_estoque());
+		return produtoService.salvarProduto(produto);
 	} 
 }
