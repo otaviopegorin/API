@@ -29,7 +29,7 @@ public class UsuarioController {
 	private UsuarioService usuarioService;
 
 	
-	@GetMapping
+	@GetMapping("/teste")
 	public void teste() {
 		try {
 			File arquivo = File.createTempFile("Teste", "txt");
