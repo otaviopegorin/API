@@ -17,7 +17,7 @@ public class Produto {
 	private Integer id_produto;
 	@Column(unique = true)
 	private String nome;
-	private BigInteger preco;
+	private double preco;
 	private String categoria;
 	private String descricao;
 	private int qtd_estoque;
@@ -28,7 +28,7 @@ public class Produto {
 	public Produto() {
 	}
 	
-	public Produto(String nome, BigInteger preco, String categoria, String descricao, int qtd_estoque) {
+	public Produto(String nome, double preco, String categoria, String descricao, int qtd_estoque) {
 		super();
 		this.nome = nome;
 		this.preco = preco;
@@ -37,7 +37,7 @@ public class Produto {
 		this.qtd_estoque = qtd_estoque;
 	}
 
-	public Produto(Integer id_produto, String nome, BigInteger preco, String categoria, String descricao,
+	public Produto(Integer id_produto, String nome, double preco, String categoria, String descricao,
 			int qtd_estoque, Boolean excluido, Date data_excluido, String img_produto) {
 		super();
 		this.id_produto = id_produto;
@@ -67,11 +67,11 @@ public class Produto {
 		this.nome = nome;
 	}
 
-	public BigInteger getPreco() {
+	public double getPreco() {
 		return preco;
 	}
 
-	public void setPreco(BigInteger preco) {
+	public void setPreco(double preco) {
 		this.preco = preco;
 	}
 

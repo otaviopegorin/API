@@ -6,7 +6,7 @@ import java.sql.Date;
 public class ProdutoDTO {
 
 	private String nome;
-	private BigInteger preco;
+	private Double preco;
 	private String categoria;
 	private String descricao;
 	private int qtd_estoque;
@@ -14,7 +14,7 @@ public class ProdutoDTO {
 	private Date data_excluido;
 	private String img_produto;
 
-	public ProdutoDTO(String nome, BigInteger preco, String categoria, String descricao, int qtd_estoque,
+	public ProdutoDTO(String nome, double preco, String categoria, String descricao, int qtd_estoque,
 			Boolean excluido, Date data_excluido, String img_produto) {
 		super();
 		this.nome = nome;
@@ -35,11 +35,11 @@ public class ProdutoDTO {
 		this.nome = nome;
 	}
 
-	public BigInteger getPreco() {
+	public double getPreco() {
 		return preco;
 	}
 
-	public void setPreco(BigInteger preco) {
+	public void setPreco(double preco) {
 		this.preco = preco;
 	}
 
