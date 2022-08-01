@@ -11,11 +11,11 @@ public class ProdutoDTO {
 	private String descricao;
 	private int qtd_estoque;
 	private Boolean excluido;
-	private Date data_excluido;
+	private String data_excluido;
 	private String img_produto;
 
 	public ProdutoDTO(String nome, double preco, String categoria, String descricao, int qtd_estoque,
-			Boolean excluido, Date data_excluido, String img_produto) {
+			Boolean excluido, String data_excluido, String img_produto) {
 		super();
 		this.nome = nome;
 		this.preco = preco;
@@ -75,11 +75,11 @@ public class ProdutoDTO {
 		this.excluido = excluido;
 	}
 
-	public Date getData_excluido() {
+	public String getData_excluido() {
 		return data_excluido;
 	}
 
-	public void setData_excluido(Date data_excluido) {
+	public void setData_excluido(String data_excluido) {
 		this.data_excluido = data_excluido;
 	}
 

@@ -22,7 +22,7 @@ public class Produto {
 	private String descricao;
 	private int qtd_estoque;
 	private Boolean excluido;
-	private Date data_excluido;
+	private String data_excluido;
 	private String img_produto;
 
 	public Produto() {
@@ -38,7 +38,7 @@ public class Produto {
 	}
 
 	public Produto(Integer id_produto, String nome, double preco, String categoria, String descricao,
-			int qtd_estoque, Boolean excluido, Date data_excluido, String img_produto) {
+			int qtd_estoque, Boolean excluido, String data_excluido, String img_produto) {
 		super();
 		this.id_produto = id_produto;
 		this.nome = nome;
@@ -107,11 +107,11 @@ public class Produto {
 		this.excluido = excluido;
 	}
 
-	public Date getData_excluido() {
+	public String getData_excluido() {
 		return data_excluido;
 	}
 
-	public void setData_excluido(Date data_excluido) {
+	public void setData_excluido(String data_excluido) {
 		this.data_excluido = data_excluido;
 	}
 
