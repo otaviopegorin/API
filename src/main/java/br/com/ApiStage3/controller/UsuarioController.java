@@ -3,6 +3,7 @@ package br.com.ApiStage3.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +15,7 @@ import br.com.ApiStage3.model.UsuarioDTO;
 import br.com.ApiStage3.service.UsuarioService;
 
 @RestController()
+@CrossOrigin()
 public class UsuarioController {
 
 	@Autowired
@@ -43,6 +45,7 @@ public class UsuarioController {
 //	}
 	@PostMapping("/autenticarUsuario")
 	public int autenticaUsuario(@RequestBody Usuario usuario) {
+		System.out.println("Email: "+usuario.getEmail()+", Senha: "+usuario.getSenha());
 		return usuarioService.autenticaUsuario(usuario.getEmail(),usuario.getSenha());
 	}
 	
