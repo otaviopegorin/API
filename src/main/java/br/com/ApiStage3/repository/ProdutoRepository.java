@@ -15,7 +15,7 @@ public interface ProdutoRepository extends JpaRepository<Produto, Integer> {
 	@Query(value="SELECT * FROM PRODUTO WHERE excluido = false ", nativeQuery = true)
 	List<Produto> findAll();
 	
-	@Query(value="SELECT * FROM PRODUTO WHERE nomeProduto = :nome and excluido = false ", nativeQuery = true)
+	@Query(value="SELECT * FROM PRODUTO WHERE :nomeProduto = nome and excluido = false ", nativeQuery = true)
 	Produto findByNome(@Param("nomeProduto") String nome);
 	
 	@Query(value="SELECT * FROM PRODUTO WHERE categoria = :categoria and excluido = false ", nativeQuery = true)
