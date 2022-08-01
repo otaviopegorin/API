@@ -2,6 +2,8 @@ package br.com.ApiStage3.controller;
 
 import java.util.List;
 
+import javax.websocket.server.ServerEndpoint;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +16,7 @@ import br.com.ApiStage3.model.Usuario;
 import br.com.ApiStage3.model.UsuarioDTO;
 import br.com.ApiStage3.service.UsuarioService;
 
+@ServerEndpoint("/usuario")
 @RestController()
 @CrossOrigin()
 public class UsuarioController {
@@ -21,6 +24,7 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioService usuarioService;
 
+	
 	@GetMapping("/usuarios")
 	public List<UsuarioDTO> getAllUsuarios() {
 		return usuarioService.getAllUsuarios();
