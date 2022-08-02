@@ -1,12 +1,16 @@
 package br.com.ApiStage3.service;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
-import br.com.ApiStage3.model.CategoriaProduto;
 import br.com.ApiStage3.model.Produto;
 import br.com.ApiStage3.model.ProdutoDTO;
 import br.com.ApiStage3.repository.ProdutoRepository;
@@ -14,8 +18,15 @@ import br.com.ApiStage3.repository.ProdutoRepository;
 @Service
 public class ProdutoService {
 
+	
 	@Autowired
 	private ProdutoRepository produtoRepository;
+	
+	@Value("${contato.disco.raiz}")
+	private String raiz;
+	
+	@Value("${contato.disco.diretorio-fotos}")
+	private String diretorioFotos;
 	
 	public List<ProdutoDTO> getAll(){
 		List<ProdutoDTO> lista = new ArrayList<ProdutoDTO>();
@@ -66,4 +77,22 @@ public class ProdutoService {
 			return false;
 		}
 	}
+	
+	public void salvar(MultipartFile foto) {
+		this.salvar(this.diretorioFotos, foto);
+	}
+
+	public void salvar(String diretorio, MultipartFile foto) {
+		Path diretorioPath = Paths.get(this.raiz, diretorio);
+		Path arquivoPath = diretorioPath.resolve(foto.getOriginalFilename());
+		
+		try {
+			Files.createDirectories(diretorioPath);
+			foto.transferTo(arquivoPath.toFile());
+		}catch(Exception e ) {
+			e.printStackTrace();
+		}
+	}
+	
+	
 }

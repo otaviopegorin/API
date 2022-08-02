@@ -7,8 +7,9 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import br.com.ApiStage3.model.Produto;
 import br.com.ApiStage3.model.ProdutoDTO;
@@ -20,6 +21,8 @@ public class ProdutoController {
 
 	@Autowired
 	private ProdutoService produtoService;
+	
+	
 	
 	@GetMapping("/produtos")
 	public List<ProdutoDTO> getAllProdutos() {
@@ -37,8 +40,12 @@ public class ProdutoController {
 	}
 	
 	@PostMapping("/criarProduto")
-	public Boolean criaUsuario(@RequestBody Produto produto) {
-		System.out.println("nome "+produto.getNome()+" preco "+produto.getPreco()+" categoria "+produto.getCategoria()+" descricao "+produto.getDescricao()+" estoque "+produto.getQtd_estoque());
+	public Boolean criaUsuario(@RequestParam Produto produto) {
 		return produtoService.salvarProduto(produto);
 	} 
+	
+	@PostMapping("/carregarImagem")
+	public void upload(@RequestParam MultipartFile foto) {
+		produtoService.salvar(foto);
+	}
 }
