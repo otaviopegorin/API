@@ -1,6 +1,8 @@
 package br.com.ApiStage3.controller;
 
+import java.io.File;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -16,36 +18,49 @@ import br.com.ApiStage3.model.ProdutoDTO;
 import br.com.ApiStage3.service.ProdutoService;
 
 @RestController()
-@CrossOrigin()
 public class ProdutoController {
 
 	@Autowired
 	private ProdutoService produtoService;
 	
-	
-	
+	@CrossOrigin
+	@GetMapping("/geraUUID")
+	public String geraUUid() {
+		UUID hash = UUID.randomUUID();
+		String s = hash.toString();
+		return s;
+	}
+	@CrossOrigin
 	@GetMapping("/produtos")
 	public List<ProdutoDTO> getAllProdutos() {
 		return produtoService.getAll();
 	}
-	
+	@CrossOrigin
 	@GetMapping(value="/getProdutoByName/{name}")
 	public ProdutoDTO getProdutoByName(@PathVariable("name") String name) {
 		return produtoService.getByName(name);
 	}
-	
+	@CrossOrigin
 	@GetMapping(value="/getProdutoByCategoria/{categoria}")
 	public List<ProdutoDTO> getProdutoByCategoria(@PathVariable("categoria") String categoria) {
 		return produtoService.getByCategoria(categoria);
 	}
-	
+	@CrossOrigin
 	@PostMapping("/criarProduto")
-	public Boolean criaUsuario(@RequestParam Produto produto) {
-		return produtoService.salvarProduto(produto);
+	public Boolean criaUsuario( @RequestParam String UUID,
+								@RequestParam String nome, 
+								@RequestParam String preco, 
+								@RequestParam String categoria,
+								@RequestParam String descricao,
+								@RequestParam String qtd_estoque,
+								@RequestParam MultipartFile foto) {
+		Produto p = new Produto(nome, Double.valueOf(preco), categoria, descricao, Integer.valueOf(qtd_estoque),UUID+foto.getOriginalFilename());
+		return produtoService.salvarProduto(p);
 	} 
-	
+	@CrossOrigin
 	@PostMapping("/carregarImagem")
 	public void upload(@RequestParam MultipartFile foto) {
-		produtoService.salvar(foto);
+		produtoService.carregarImagem(foto);
 	}
+	
 }

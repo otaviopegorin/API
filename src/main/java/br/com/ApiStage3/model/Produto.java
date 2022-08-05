@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.springframework.web.multipart.MultipartFile;
+
 @Entity(name = "Produto")
 public class Produto {
 
@@ -28,13 +30,14 @@ public class Produto {
 	public Produto() {
 	}
 	
-	public Produto(String nome, double preco, String categoria, String descricao, int qtd_estoque) {
+	public Produto(String nome, double preco, String categoria, String descricao, int qtd_estoque, String img_produto) {
 		super();
 		this.nome = nome;
 		this.preco = preco;
 		this.categoria = categoria;
 		this.descricao = descricao;
 		this.qtd_estoque = qtd_estoque;
+		this.img_produto = img_produto;
 	}
 
 	public Produto(Integer id_produto, String nome, double preco, String categoria, String descricao,
