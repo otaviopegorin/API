@@ -54,6 +54,7 @@ public class ProdutoController {
 								@RequestParam String descricao,
 								@RequestParam String qtd_estoque,
 								@RequestParam MultipartFile foto) {
+		System.out.println(UUID);
 		Produto p = new Produto(nome, Double.valueOf(preco), categoria, descricao, Integer.valueOf(qtd_estoque),UUID+foto.getOriginalFilename());
 		return produtoService.salvarProduto(p);
 	} 
