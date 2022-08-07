@@ -19,7 +19,7 @@ public class Produto {
 	private String descricao;
 	private int qtd_estoque;
 	private Boolean excluido = false;
-	private String data_excluido;
+	private String data_excluido = "";
 	private String img_produto;
 	private int quantidade = 0;
 	
