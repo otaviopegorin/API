@@ -58,10 +58,6 @@ public class ProdutoController {
 		Produto p = new Produto(nome, Double.valueOf(preco), categoria, descricao, Integer.valueOf(qtd_estoque),"http://projetoscti.com.br/projetoscti02/testesPegorin/"+UUID+foto.getOriginalFilename());
 		return produtoService.salvarProduto(p);
 	} 
-	@CrossOrigin
-	@PostMapping("/carregarImagem")
-	public void upload(@RequestParam MultipartFile foto) {
-		produtoService.carregarImagem(foto);
-	}
+	
 	
 }

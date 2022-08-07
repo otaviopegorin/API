@@ -1,8 +1,5 @@
 package br.com.ApiStage3.model;
 
-import java.math.BigInteger;
-import java.sql.Date;
-
 public class ProdutoDTO {
 
 	private String nome;
@@ -10,6 +7,7 @@ public class ProdutoDTO {
 	private String categoria;
 	private String descricao;
 	private int qtd_estoque;
+	private int quantidade = 0;
 	private Boolean excluido;
 	private String data_excluido;
 	private String img_produto;
@@ -26,6 +24,19 @@ public class ProdutoDTO {
 		this.data_excluido = data_excluido;
 		this.img_produto = img_produto;
 	}
+	
+	public int getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
+
+	public void setPreco(Double preco) {
+		this.preco = preco;
+	}
+
 
 	public String getNome() {
 		return nome;

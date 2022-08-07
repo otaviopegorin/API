@@ -1,15 +1,10 @@
 package br.com.ApiStage3.model;
 
-import java.math.BigInteger;
-import java.sql.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import org.springframework.web.multipart.MultipartFile;
 
 @Entity(name = "Produto")
 public class Produto {
@@ -26,7 +21,8 @@ public class Produto {
 	private Boolean excluido = false;
 	private String data_excluido;
 	private String img_produto;
-
+	private int quantidade = 0;
+	
 	public Produto() {
 	}
 	
@@ -53,6 +49,15 @@ public class Produto {
 		this.data_excluido = data_excluido;
 		this.img_produto = img_produto;
 	}
+	
+	public int getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
+
 
 	public Integer getId_produto() {
 		return id_produto;

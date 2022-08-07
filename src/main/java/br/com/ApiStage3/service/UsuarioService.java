@@ -36,6 +36,11 @@ public class UsuarioService {
 		return usuariosDTO;
 	}
 	
+	public Usuario getUsuarioByEmail(String email) {
+		Usuario usu = usuarioRepository.findByEmail(email);
+		return usu;
+	}
+	
 	public UsuarioDTO getUsuarioById(Integer id) {
 		Usuario usuario = usuarioRepository.getById(id);
 		UsuarioDTO usuarioDTO = usuario.toUsuarioDTO();

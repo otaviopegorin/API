@@ -44,7 +44,13 @@ public class ProdutoService {
 		Produto produto = produtoRepository.findByNome(nome);
 		return produto.toDTO();
 	}
+	
+	public Produto getProdutoByName(String nome) {
+		Produto produto = produtoRepository.findByNome(nome);
+		return produto;
+	}
 
+	
 	public List<ProdutoDTO> getByCategoria(String categoria) {
 		List<ProdutoDTO> lista = new ArrayList<ProdutoDTO>();
 		if (verificaCategoria(categoria)) {
@@ -77,42 +83,4 @@ public class ProdutoService {
 	}
 
 	
-	public void carregarImagem(MultipartFile arquivo) {
-		String serverName = "projetoscti.com.br";
-		int port = 21;
-		String userName = "projetoscti02";
-		String password = "password";
-
-		try {
-		//Concta
-		FTPClient ftpCliente = new FTPClient();
-		ftpCliente.connect(serverName);
-		System.out.println("Connectado");
-
-		//Loga
-		ftpCliente.login(userName, password);
-		//ftpCliente.changeWorkingDirectory("Server");
-		System.out.println("Logado");
-
-		InputStream arqEnviar = arquivo.getInputStream();
-		
-		System.out.println("Arquivo a ser enviado: " + arqEnviar);
-
-		if (ftpCliente.storeFile(arquivo.getName(), arqEnviar))
-		System.out.println("Arquivo armazenado com sucesso!");
-		else
-		System.out.println ("Erro ao armazenar o arquivo.");
-
-		//Lista
-		String[] arq = ftpCliente.listNames();
-		System.out.println("Listando os arquivos: \n");
-		for(String f: arq) {
-		System.out.println(f);
-		}
-		}
-		catch (IOException io)
-		{
-		io.printStackTrace();
-		}
-	}
 }

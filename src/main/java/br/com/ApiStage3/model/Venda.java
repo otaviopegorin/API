@@ -40,7 +40,15 @@ public class Venda {
 		this.excluido = excluido;
 		this.dataExcluido = dataExcluido;
 	}
+	
+	
 
+	public Venda(Usuario usuario, BigInteger preco) {
+		super();
+		this.usuario = usuario;
+		this.preco = preco;
+	}
+	
 	public Integer getId_venda() {
 		return id_venda;
 	}
