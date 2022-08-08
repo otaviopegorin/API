@@ -31,7 +31,7 @@ public class VendaController {
 	}
 	
 	@PostMapping("/cadastroNovaVenda")
-	public int cadastroNovaVenda(@RequestBody String email, @RequestBody int preco) {
+	public int cadastroNovaVenda(@RequestParam String email, @RequestParam int preco) {
 		System.out.println(email);
 		System.out.println(preco);
 //		for (ProdutoDTO produtoDTO : produtos) {
