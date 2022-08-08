@@ -31,13 +31,13 @@ public class VendaController {
 	}
 	
 	@PostMapping("/cadastroNovaVenda")
-	public int cadastroNovaVenda(@RequestBody String email, @RequestBody int preco, @RequestBody List<ProdutoDTO> produtos) {
+	public int cadastroNovaVenda(@RequestBody String email, @RequestBody int preco) {
 		System.out.println(email);
 		System.out.println(preco);
-		for (ProdutoDTO produtoDTO : produtos) {
-			System.out.println(produtoDTO);
-		}
-		vendaService.cadastroNovaVenda(email,produtos, preco);
+//		for (ProdutoDTO produtoDTO : produtos) {
+//			System.out.println(produtoDTO);
+//		}
+//		vendaService.cadastroNovaVenda(email,produtos, preco);
 		return 0;
 	}
 	
