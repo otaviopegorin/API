@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.ApiStage3.model.ProdutoDTO;
 import br.com.ApiStage3.model.VendaDTO;
 import br.com.ApiStage3.service.VendaService;
 
@@ -30,12 +29,9 @@ public class VendaController {
 	}
 	
 	@PostMapping("/cadastroNovaVenda")
-	public int cadastroNovaVenda(@RequestBody String email, @RequestBody int preco, @RequestBody List<ProdutoDTO> produtos) {
+	public int cadastroNovaVenda(@RequestBody String email, @RequestBody int preco) {
 		System.out.println(email);
 		System.out.println(preco);
-		produtos.forEach(a -> {
-			System.out.println(a.getNome());
-		});
 		return 0;
 	}
 	
