@@ -1,6 +1,5 @@
 package br.com.ApiStage3.model;
 
-import java.math.BigInteger;
 import java.sql.Date;
 
 import javax.persistence.Entity;
@@ -20,14 +19,14 @@ public class Item_venda {
 	@ManyToOne
 	private Venda venda;
 	private int quantidade;
-	private BigInteger preco;
-	private Boolean excluido;
-	private Date data_excluido;
+	private double preco;
+	private Boolean excluido = false;
+	private String data_excluido = "";
 
 	public Item_venda() {}
 	
 	
-	public Item_venda(Produto produto, int quantidade, BigInteger preco) {
+	public Item_venda(Produto produto, int quantidade, double preco) {
 		super();
 		this.produto = produto;
 		this.quantidade = quantidade;
@@ -35,7 +34,7 @@ public class Item_venda {
 	}
 
 
-	public Item_venda(Integer id_item_venda, Produto produto, Venda venda, int quantidade, BigInteger preco,
+	public Item_venda(Integer id_item_venda, Produto produto, Venda venda, int quantidade, double preco,
 			Boolean excluido, Date data_excluido) {
 		super();
 		this.id_item_venda = id_item_venda;
@@ -80,11 +79,11 @@ public class Item_venda {
 		this.quantidade = quantidade;
 	}
 
-	public BigInteger getPreco() {
+	public double getPreco() {
 		return preco;
 	}
 
-	public void setPreco(BigInteger preco) {
+	public void setPreco(double preco) {
 		this.preco = preco;
 	}
 

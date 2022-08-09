@@ -22,7 +22,7 @@ public class Venda {
 	@OneToMany(mappedBy = "venda")
 	private List<Item_venda> produtos;
 	private Date data_venda;
-	private BigInteger preco;
+	private double preco;
 	private Boolean excluido = false;
 	private Date dataExcluido;
 
@@ -31,7 +31,7 @@ public class Venda {
 	}
 	
 	
-	public Venda(Usuario usuario, List<Item_venda> produtos, BigInteger preco) {
+	public Venda(Usuario usuario, List<Item_venda> produtos, double preco) {
 		super();
 		this.usuario = usuario;
 		this.produtos = produtos;
@@ -39,7 +39,7 @@ public class Venda {
 	}
 
 
-	public Venda(Integer id_venda, Usuario usuario, List<Item_venda> produtos, Date data_venda, BigInteger preco,
+	public Venda(Integer id_venda, Usuario usuario, List<Item_venda> produtos, Date data_venda, double preco,
 			Boolean excluido, Date dataExcluido) {
 		super();
 		this.id_venda = id_venda;
@@ -53,7 +53,7 @@ public class Venda {
 	
 	
 
-	public Venda(Usuario usuario, BigInteger preco) {
+	public Venda(Usuario usuario, double preco) {
 		super();
 		this.usuario = usuario;
 		this.preco = preco;
@@ -91,11 +91,11 @@ public class Venda {
 		this.data_venda = data_venda;
 	}
 
-	public BigInteger getPreco() {
+	public double getPreco() {
 		return preco;
 	}
 
-	public void setPreco(BigInteger preco) {
+	public void setPreco(double preco) {
 		this.preco = preco;
 	}
 

@@ -1,6 +1,5 @@
 package br.com.ApiStage3.model;
 
-import java.math.BigInteger;
 import java.sql.Date;
 
 public class Item_vendaDTO {
@@ -8,11 +7,11 @@ public class Item_vendaDTO {
 	private Produto produto;
 	private Venda venda;
 	private int quantidade;
-	private BigInteger preco;
+	private double preco;
 	private Boolean excluido;
 	private Date data_excluido;
 
-	public Item_vendaDTO(Produto produto, Venda venda, int quantidade, BigInteger preco, Boolean excluido,
+	public Item_vendaDTO(Produto produto, Venda venda, int quantidade, double preco, Boolean excluido,
 			Date data_excluido) {
 		super();
 		this.produto = produto;
@@ -47,11 +46,11 @@ public class Item_vendaDTO {
 		this.quantidade = quantidade;
 	}
 
-	public BigInteger getPreco() {
+	public double getPreco() {
 		return preco;
 	}
 
-	public void setPreco(BigInteger preco) {
+	public void setPreco(double preco) {
 		this.preco = preco;
 	}
 

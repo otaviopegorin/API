@@ -1,16 +1,15 @@
 package br.com.ApiStage3.model;
 
-import java.math.BigInteger;
 import java.sql.Date;
 
 public class VendaDTO {
 
 	private Date data_venda;
-	private BigInteger preco;
+	private double preco;
 	private Boolean excluido;
 	private Date dataExcluido;
 
-	public VendaDTO(Date data_venda, BigInteger preco, Boolean excluido, Date dataExcluido) {
+	public VendaDTO(Date data_venda, double preco, boolean excluido, Date dataExcluido) {
 		super();
 		this.data_venda = data_venda;
 		this.preco = preco;
@@ -26,11 +25,11 @@ public class VendaDTO {
 		this.data_venda = data_venda;
 	}
 
-	public BigInteger getPreco() {
+	public double getPreco() {
 		return preco;
 	}
 
-	public void setPreco(BigInteger preco) {
+	public void setPreco(double preco) {
 		this.preco = preco;
 	}
 

@@ -1,6 +1,5 @@
 package br.com.ApiStage3.controller;
 
-import java.io.File;
 import java.util.List;
 import java.util.UUID;
 
@@ -38,7 +37,8 @@ public class ProdutoController {
 	@CrossOrigin
 	@GetMapping(value="/getProdutoByName/{name}")
 	public ProdutoDTO getProdutoByName(@PathVariable("name") String name) {
-		return produtoService.getByName(name);
+		Produto p = produtoService.getByName(name);
+		return p.toDTO();
 	}
 	@CrossOrigin
 	@GetMapping(value="/getProdutoByCategoria/{categoria}")

@@ -40,9 +40,9 @@ public class ProdutoService {
 		return lista;
 	}
 
-	public ProdutoDTO getByName(String nome) {
+	public Produto getByName(String nome) {
 		Produto produto = produtoRepository.findByNome(nome);
-		return produto.toDTO();
+		return produto;
 	}
 	
 	public Produto getProdutoByName(String nome) {

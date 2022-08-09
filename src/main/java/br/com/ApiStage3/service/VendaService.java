@@ -6,11 +6,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.ApiStage3.model.Item_venda;
 import br.com.ApiStage3.model.Produto;
 import br.com.ApiStage3.model.ProdutoDTO;
 import br.com.ApiStage3.model.Usuario;
 import br.com.ApiStage3.model.Venda;
 import br.com.ApiStage3.model.VendaDTO;
+import br.com.ApiStage3.repository.Item_vendaRepository;
 import br.com.ApiStage3.repository.VendaRepository;
 
 @Service
@@ -24,6 +26,9 @@ public class VendaService {
 
 	@Autowired
 	private VendaRepository vendaRepository;
+	
+	@Autowired
+	private Item_vendaRepository item_vendaRepository;
 	
 	public List<VendaDTO> getAll(){
 		List<VendaDTO> lista = new ArrayList<VendaDTO>();
@@ -43,15 +48,24 @@ public class VendaService {
 		return lista;
 	}
 
-	public void cadastroNovaVenda(String email, List<ProdutoDTO> produtos, int preco) {
-		Usuario usu = usuarioService.getUsuarioByEmail(email);
-		List<Produto> prods = new ArrayList<Produto>();
-		produtos.forEach(a -> {
-			Produto p = produtoService.getProdutoByName(a.getNome());
-			p.setQuantidade(p.getQuantidade());
-			prods.add(p);
-		});
-		Venda a = new Venda();
+	public void cadastroNovaVenda(String email, List<ProdutoDTO> produtos, double preco) {
+		try {
+			List<Item_venda> itens = new ArrayList<Item_venda>();
+			Usuario usu = usuarioService.getUsuarioByEmail(email);
+			Venda venda = new Venda(usu,preco);
+			produtos.forEach(a ->
+			{
+				Produto p = produtoService.getByName(a.getNome());
+				Item_venda item = new Item_venda(p, a.getQuantidade(), a.getPreco());
+				item.setVenda(venda);
+				item_vendaRepository.save(item);
+				itens.add(item);
+			});
+			venda.setProdutos(itens);
+			vendaRepository.save(venda);
+		}catch(Exception e ) {
+			e.printStackTrace();
+		}
 		
 	}
 }
