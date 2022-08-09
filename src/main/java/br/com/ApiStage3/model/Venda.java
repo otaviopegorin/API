@@ -8,7 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity(name = "Venda")
 public class Venda {
@@ -16,9 +17,10 @@ public class Venda {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id_venda;
-	private String emailUsuario;
-	@ManyToMany
-	private List<Produto> produtos;
+	@ManyToOne
+	private Usuario usuario;
+	@OneToMany(mappedBy = "venda")
+	private List<Item_venda> produtos;
 	private Date data_venda;
 	private BigInteger preco;
 	private Boolean excluido = false;
@@ -29,19 +31,19 @@ public class Venda {
 	}
 	
 	
-	public Venda(String emailUsuario, List<Produto> produtos, BigInteger preco) {
+	public Venda(Usuario usuario, List<Item_venda> produtos, BigInteger preco) {
 		super();
-		this.emailUsuario = emailUsuario;
+		this.usuario = usuario;
 		this.produtos = produtos;
 		this.preco = preco;
 	}
 
 
-	public Venda(Integer id_venda, String usuario, List<Produto> produtos, Date data_venda, BigInteger preco,
+	public Venda(Integer id_venda, Usuario usuario, List<Item_venda> produtos, Date data_venda, BigInteger preco,
 			Boolean excluido, Date dataExcluido) {
 		super();
 		this.id_venda = id_venda;
-		this.emailUsuario = usuario;
+		this.usuario = usuario;
 		this.produtos = produtos;
 		this.data_venda = data_venda;
 		this.preco = preco;
@@ -51,9 +53,9 @@ public class Venda {
 	
 	
 
-	public Venda(String usuario, BigInteger preco) {
+	public Venda(Usuario usuario, BigInteger preco) {
 		super();
-		this.emailUsuario = usuario;
+		this.usuario = usuario;
 		this.preco = preco;
 	}
 	
@@ -65,19 +67,19 @@ public class Venda {
 		this.id_venda = id_venda;
 	}
 
-	public String getUsuario() {
-		return emailUsuario;
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
-	public void setUsuario(String usuario) {
-		this.emailUsuario = usuario;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
-	public List<Produto> getProdutos() {
+	public List<Item_venda> getProdutos() {
 		return produtos;
 	}
 
-	public void setProdutos(List<Produto> produtos) {
+	public void setProdutos(List<Item_venda> produtos) {
 		this.produtos = produtos;
 	}
 

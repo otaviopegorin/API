@@ -1,10 +1,13 @@
 package br.com.ApiStage3.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity(name = "Produto")
 public class Produto {
@@ -14,6 +17,8 @@ public class Produto {
 	private Integer id_produto;
 	@Column(unique = true)
 	private String nome;
+	@OneToMany(mappedBy = "produto")
+	private List<Item_venda> item_venda;
 	private double preco;
 	private String categoria;
 	private String descricao;

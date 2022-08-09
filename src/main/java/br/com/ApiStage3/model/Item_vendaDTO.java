@@ -2,18 +2,17 @@ package br.com.ApiStage3.model;
 
 import java.math.BigInteger;
 import java.sql.Date;
-import java.util.List;
 
 public class Item_vendaDTO {
 
-	private List<Produto> produto;
+	private Produto produto;
 	private Venda venda;
 	private int quantidade;
 	private BigInteger preco;
 	private Boolean excluido;
 	private Date data_excluido;
 
-	public Item_vendaDTO(List<Produto> produto, Venda venda, int quantidade, BigInteger preco, Boolean excluido,
+	public Item_vendaDTO(Produto produto, Venda venda, int quantidade, BigInteger preco, Boolean excluido,
 			Date data_excluido) {
 		super();
 		this.produto = produto;
@@ -24,11 +23,11 @@ public class Item_vendaDTO {
 		this.data_excluido = data_excluido;
 	}
 
-	public List<Produto> getProduto() {
+	public Produto getProduto() {
 		return produto;
 	}
 
-	public void setProduto(List<Produto> produto) {
+	public void setProduto(Produto produto) {
 		this.produto = produto;
 	}
 
