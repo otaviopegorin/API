@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+
+
 
 import br.com.ApiStage3.model.VendaDTO;
 import br.com.ApiStage3.service.VendaService;
@@ -28,9 +31,9 @@ public class VendaController {
 		return vendaService.findByIdUsuario(id);
 	}
 	
-	@PostMapping("/cadastroNovaVenda")
-	public int cadastroNovaVenda(@RequestBody String email, @RequestBody int preco) {
-		System.out.println(email);
+	@PostMapping(path =  "/cadastroNovaVenda",consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public int cadastroNovaVenda(@RequestBody String emailUsu, @RequestBody int preco) {
+		System.out.println(emailUsu);
 		System.out.println(preco);
 		return 0;
 	}
