@@ -1,7 +1,5 @@
 package br.com.ApiStage3.model;
 
-import java.sql.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -35,7 +33,7 @@ public class Item_venda {
 
 
 	public Item_venda(Integer id_item_venda, Produto produto, Venda venda, int quantidade, double preco,
-			Boolean excluido, Date data_excluido) {
+			Boolean excluido, String data_excluido) {
 		super();
 		this.id_item_venda = id_item_venda;
 		this.produto = produto;
@@ -95,11 +93,11 @@ public class Item_venda {
 		this.excluido = excluido;
 	}
 
-	public Date getData_excluido() {
+	public String getData_excluido() {
 		return data_excluido;
 	}
 
-	public void setData_excluido(Date data_excluido) {
+	public void setData_excluido(String data_excluido) {
 		this.data_excluido = data_excluido;
 	}
 

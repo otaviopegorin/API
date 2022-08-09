@@ -1,7 +1,5 @@
 package br.com.ApiStage3.model;
 
-import java.sql.Date;
-
 public class Item_vendaDTO {
 
 	private Produto produto;
@@ -9,10 +7,10 @@ public class Item_vendaDTO {
 	private int quantidade;
 	private double preco;
 	private Boolean excluido;
-	private Date data_excluido;
+	private String data_excluido;
 
 	public Item_vendaDTO(Produto produto, Venda venda, int quantidade, double preco, Boolean excluido,
-			Date data_excluido) {
+			String data_excluido) {
 		super();
 		this.produto = produto;
 		this.venda = venda;
@@ -62,11 +60,11 @@ public class Item_vendaDTO {
 		this.excluido = excluido;
 	}
 
-	public Date getData_excluido() {
+	public String getData_excluido() {
 		return data_excluido;
 	}
 
-	public void setData_excluido(Date data_excluido) {
+	public void setData_excluido(String data_excluido) {
 		this.data_excluido = data_excluido;
 	}
 

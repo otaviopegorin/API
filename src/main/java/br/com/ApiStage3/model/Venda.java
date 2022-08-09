@@ -1,6 +1,5 @@
 package br.com.ApiStage3.model;
 
-import java.math.BigInteger;
 import java.sql.Date;
 import java.util.List;
 
