@@ -53,6 +53,7 @@ public class VendaService {
 			List<Item_venda> itens = new ArrayList<Item_venda>();
 			Usuario usu = usuarioService.getUsuarioByEmail(email);
 			Venda venda = new Venda(usu,preco);
+			vendaRepository.save(venda);
 			produtos.forEach(a ->
 			{
 				Produto p = produtoService.getByName(a.getNome());
