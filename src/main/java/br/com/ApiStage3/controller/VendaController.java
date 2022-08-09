@@ -31,7 +31,11 @@ public class VendaController {
 	}
 	
 	@PostMapping("/cadastroNovaVenda")
+<<<<<<< HEAD
 	public int cadastroNovaVenda(@RequestBody String email, @RequestBody int preco, @RequestBody List<ProdutoDTO> produtos) {
+=======
+	public int cadastroNovaVenda(@RequestParam String email, @RequestParam int preco) {
+>>>>>>> 6732352299b518046642d3b2151b1d35f72dd39c
 		System.out.println(email);
 		System.out.println(preco);
 		for (ProdutoDTO produtoDTO : produtos) {
