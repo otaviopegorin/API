@@ -8,8 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 
 @Entity(name = "Venda")
 public class Venda {
@@ -17,23 +16,32 @@ public class Venda {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id_venda;
-	@ManyToOne
-	private Usuario usuario;
-	@OneToMany(mappedBy = "venda")
-	private List<Item_venda> produtos;
+	private String emailUsuario;
+	@ManyToMany
+	private List<Produto> produtos;
 	private Date data_venda;
 	private BigInteger preco;
-	private Boolean excluido;
+	private Boolean excluido = false;
 	private Date dataExcluido;
 
 	public Venda() {
 		
 	}
-	public Venda(Integer id_venda, Usuario usuario, List<Item_venda> produtos, Date data_venda, BigInteger preco,
+	
+	
+	public Venda(String emailUsuario, List<Produto> produtos, BigInteger preco) {
+		super();
+		this.emailUsuario = emailUsuario;
+		this.produtos = produtos;
+		this.preco = preco;
+	}
+
+
+	public Venda(Integer id_venda, String usuario, List<Produto> produtos, Date data_venda, BigInteger preco,
 			Boolean excluido, Date dataExcluido) {
 		super();
 		this.id_venda = id_venda;
-		this.usuario = usuario;
+		this.emailUsuario = usuario;
 		this.produtos = produtos;
 		this.data_venda = data_venda;
 		this.preco = preco;
@@ -43,9 +51,9 @@ public class Venda {
 	
 	
 
-	public Venda(Usuario usuario, BigInteger preco) {
+	public Venda(String usuario, BigInteger preco) {
 		super();
-		this.usuario = usuario;
+		this.emailUsuario = usuario;
 		this.preco = preco;
 	}
 	
@@ -57,19 +65,19 @@ public class Venda {
 		this.id_venda = id_venda;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
+	public String getUsuario() {
+		return emailUsuario;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setUsuario(String usuario) {
+		this.emailUsuario = usuario;
 	}
 
-	public List<Item_venda> getProdutos() {
+	public List<Produto> getProdutos() {
 		return produtos;
 	}
 
-	public void setProdutos(List<Item_venda> produtos) {
+	public void setProdutos(List<Produto> produtos) {
 		this.produtos = produtos;
 	}
 

@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.ApiStage3.model.Item_venda;
 import br.com.ApiStage3.model.Produto;
 import br.com.ApiStage3.model.ProdutoDTO;
 import br.com.ApiStage3.model.Usuario;
@@ -51,10 +50,6 @@ public class VendaService {
 			Produto p = produtoService.getProdutoByName(a.getNome());
 			p.setQuantidade(p.getQuantidade());
 			prods.add(p);
-		});
-		prods.forEach(a ->{
-			
-			Item_venda i = new Item_venda();
 		});
 		Venda a = new Venda();
 		

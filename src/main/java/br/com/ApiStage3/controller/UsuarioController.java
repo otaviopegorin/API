@@ -29,27 +29,6 @@ public class UsuarioController {
 	private UsuarioService usuarioService;
 
 	
-	@GetMapping("/teste")
-	public void teste() {
-		try {
-			File arquivo = File.createTempFile("Teste", "txt");
-			if(!arquivo.exists()) {
-				System.out.println("Falha ao criar o arquivo");
-			} else {
-				System.out.println("Arquivo existe");
-				Properties properties = new Properties();
-				properties.put("teste", "ok");
-				System.out.println("tentando gravar no arquivo");
-				try(FileOutputStream out = new FileOutputStream(arquivo);){
-					properties.store(out, "Teste");
-					System.out.println("Arquivo salvo");	
-				}
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	
 	@GetMapping("/usuarios")
 	public List<UsuarioDTO> getAllUsuarios() {
 		return usuarioService.getAllUsuarios();
