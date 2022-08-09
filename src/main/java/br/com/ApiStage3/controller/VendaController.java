@@ -33,8 +33,6 @@ public class VendaController {
 	@PostMapping("/cadastroNovaVenda")
 	public int cadastroNovaVenda(@RequestBody String email) {
 		System.out.println(email);
-		System.out.println(preco);
-		vendaService.cadastroNovaVenda(email,produtos,preco);
 		return 0;
 	}
 	
