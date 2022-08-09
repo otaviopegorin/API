@@ -7,6 +7,9 @@ public class AuxVendaDTO {
 	private String email;
 	private Double preco;
 	private List<ProdutoDTO> produtos;
+	
+	public AuxVendaDTO() {}
+	
 	public AuxVendaDTO(String email, Double preco, List<ProdutoDTO> produtos) {
 		super();
 		this.email = email;
