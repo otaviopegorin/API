@@ -32,9 +32,8 @@ public class VendaController {
 	}
 	
 	@PostMapping(path =  "/cadastroNovaVenda",consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public int cadastroNovaVenda(@RequestBody String emailUsu, @RequestBody int preco) {
+	public int cadastroNovaVenda(@RequestBody String emailUsu) {
 		System.out.println(emailUsu);
-		System.out.println(preco);
 		return 0;
 	}
 	
