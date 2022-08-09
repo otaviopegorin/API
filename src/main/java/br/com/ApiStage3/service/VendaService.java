@@ -48,7 +48,7 @@ public class VendaService {
 		return lista;
 	}
 
-	public void cadastroNovaVenda(String email, List<ProdutoDTO> produtos, double preco) {
+	public int cadastroNovaVenda(String email, List<ProdutoDTO> produtos, double preco) {
 		try {
 			List<Item_venda> itens = new ArrayList<Item_venda>();
 			Usuario usu = usuarioService.getUsuarioByEmail(email);
@@ -64,8 +64,10 @@ public class VendaService {
 			});
 			venda.setProdutos(itens);
 			vendaRepository.save(venda);
+			return 1;
 		}catch(Exception e ) {
 			e.printStackTrace();
+			return 0;
 		}
 		
 	}
