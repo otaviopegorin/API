@@ -24,6 +24,7 @@ public class Usuario {
             cascade = CascadeType.ALL)
 	private List<Venda> pedidos;
 	private String senha; 
+	@Column(unique = true)
 	private String telefone;
 	private Boolean recuperarSenha;
 	private Boolean adm;
