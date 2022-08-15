@@ -40,9 +40,13 @@ public class ProdutoService {
 		return lista;
 	}
 
-	public Produto getByName(String nome) {
-		Produto produto = produtoRepository.findByNome(nome);
-		return produto;
+	public List<ProdutoDTO> getLikeByName(String nome) {
+		List<Produto> produto = produtoRepository.findLikeName(nome);
+		List<ProdutoDTO> produtosDTO = new ArrayList<ProdutoDTO>();
+		produto.forEach(a -> {
+			produtosDTO.add(a.toDTO());
+		});
+		return produtosDTO;
 	}
 	
 	public Produto getProdutoByName(String nome) {

@@ -36,9 +36,9 @@ public class ProdutoController {
 	}
 	@CrossOrigin
 	@GetMapping(value="/getProdutoByName/{name}")
-	public ProdutoDTO getProdutoByName(@PathVariable("name") String name) {
-		Produto p = produtoService.getByName(name);
-		return p.toDTO();
+	public List<ProdutoDTO> getProdutoByName(@PathVariable("name") String name) {
+		List<ProdutoDTO> p = produtoService.getLikeByName(name);
+		return p;
 	}
 	@CrossOrigin
 	@GetMapping(value="/getProdutoByCategoria/{categoria}")
