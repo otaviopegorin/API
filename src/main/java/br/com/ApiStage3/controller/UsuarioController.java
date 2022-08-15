@@ -68,7 +68,7 @@ public class UsuarioController {
 	}
 	
 	@GetMapping("/getUsuarioByEmail/{email}")
-	public UsuarioDTO getUsuarioByEmail(@PathParam("email") String email) {
+	public UsuarioDTO getUsuarioByEmail(@PathVariable("email") String email) {
 		Usuario u = usuarioService.getUsuarioByEmail(email);
 		UsuarioDTO dto = u.toUsuarioDTO();
 		return dto;
