@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Properties;
 
+import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,8 +67,8 @@ public class UsuarioController {
 		return usuarioService.cadastroNovaSenha(usuario.getEmail(),usuario.getSenha());
 	}
 	
-	@PostMapping("/getUsuarioByEmail/")
-	public UsuarioDTO getUsuarioByEmail(@RequestBody String email) {
+	@GetMapping("/getUsuarioByEmail/{email}")
+	public UsuarioDTO getUsuarioByEmail(@PathParam("email") String email) {
 		Usuario u = usuarioService.getUsuarioByEmail(email);
 		UsuarioDTO dto = u.toUsuarioDTO();
 		return dto;
