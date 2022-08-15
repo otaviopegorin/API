@@ -31,6 +31,7 @@ public class Usuario {
 
 	public Usuario() {
 	}
+	
 
 	public Usuario( String nome, String email, String senha, String telefone, Boolean adm, Boolean recuperarSenha) {
 		super();

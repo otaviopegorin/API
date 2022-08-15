@@ -66,8 +66,8 @@ public class UsuarioController {
 		return usuarioService.cadastroNovaSenha(usuario.getEmail(),usuario.getSenha());
 	}
 	
-	@GetMapping("/getUsuarioByEmail/{email}")
-	public UsuarioDTO getUsuarioByEmail(@PathVariable("email") String email) {
+	@PostMapping("/getUsuarioByEmail/")
+	public UsuarioDTO getUsuarioByEmail(@RequestBody String email) {
 		Usuario u = usuarioService.getUsuarioByEmail(email);
 		UsuarioDTO dto = u.toUsuarioDTO();
 		return dto;
