@@ -1,6 +1,6 @@
 package br.com.ApiStage3.model;
 
-import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -20,10 +20,10 @@ public class Venda {
 	private Usuario usuario;
 	@OneToMany(mappedBy = "venda")
 	private List<Item_venda> produtos;
-	private Date data_venda;
+	private LocalDateTime data_venda;
 	private double preco;
 	private Boolean excluido = false;
-	private Date dataExcluido;
+	private LocalDateTime dataExcluido;
 
 	public Venda() {
 		
@@ -38,8 +38,8 @@ public class Venda {
 	}
 
 
-	public Venda(Integer id_venda, Usuario usuario, List<Item_venda> produtos, Date data_venda, double preco,
-			Boolean excluido, Date dataExcluido) {
+	public Venda(Integer id_venda, Usuario usuario, List<Item_venda> produtos, LocalDateTime data_venda, double preco,
+			Boolean excluido, LocalDateTime dataExcluido) {
 		super();
 		this.id_venda = id_venda;
 		this.usuario = usuario;
@@ -82,11 +82,11 @@ public class Venda {
 		this.produtos = produtos;
 	}
 
-	public Date getData_venda() {
+	public LocalDateTime getData_venda() {
 		return data_venda;
 	}
 
-	public void setData_venda(Date data_venda) {
+	public void setData_venda(LocalDateTime data_venda) {
 		this.data_venda = data_venda;
 	}
 
@@ -106,11 +106,11 @@ public class Venda {
 		this.excluido = excluido;
 	}
 
-	public Date getDataExcluido() {
+	public LocalDateTime getDataExcluido() {
 		return dataExcluido;
 	}
 
-	public void setDataExcluido(Date dataExcluido) {
+	public void setDataExcluido(LocalDateTime dataExcluido) {
 		this.dataExcluido = dataExcluido;
 	}
 

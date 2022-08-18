@@ -1,15 +1,15 @@
 package br.com.ApiStage3.model;
 
-import java.sql.Date;
+import java.time.LocalDateTime;
 
 public class VendaDTO {
 
-	private Date data_venda;
+	private LocalDateTime data_venda;
 	private double preco;
 	private Boolean excluido;
-	private Date dataExcluido;
+	private LocalDateTime dataExcluido;
 
-	public VendaDTO(Date data_venda, double preco, boolean excluido, Date dataExcluido) {
+	public VendaDTO(LocalDateTime data_venda, double preco, boolean excluido, LocalDateTime dataExcluido) {
 		super();
 		this.data_venda = data_venda;
 		this.preco = preco;
@@ -17,11 +17,11 @@ public class VendaDTO {
 		this.dataExcluido = dataExcluido;
 	}
 
-	public Date getData_venda() {
+	public LocalDateTime getData_venda() {
 		return data_venda;
 	}
 
-	public void setData_venda(Date data_venda) {
+	public void setData_venda(LocalDateTime data_venda) {
 		this.data_venda = data_venda;
 	}
 
@@ -41,11 +41,11 @@ public class VendaDTO {
 		this.excluido = excluido;
 	}
 
-	public Date getDataExcluido() {
+	public LocalDateTime getDataExcluido() {
 		return dataExcluido;
 	}
 
-	public void setDataExcluido(Date dataExcluido) {
+	public void setDataExcluido(LocalDateTime dataExcluido) {
 		this.dataExcluido = dataExcluido;
 	}
 

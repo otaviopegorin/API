@@ -1,5 +1,6 @@
 package br.com.ApiStage3.service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,6 +64,7 @@ public class VendaService {
 				itens.add(item);
 			});
 			venda.setProdutos(itens);
+			venda.setData_venda(LocalDateTime.now());
 			vendaRepository.save(venda);
 			return 1;
 		}catch(Exception e ) {
