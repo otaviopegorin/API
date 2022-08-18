@@ -28,6 +28,42 @@ public class Usuario {
 	private String telefone;
 	private Boolean recuperarSenha;
 	private Boolean adm;
+	private String img_usuario;
+
+
+	public List<Venda> getPedidos() {
+		return pedidos;
+	}
+
+
+	public void setPedidos(List<Venda> pedidos) {
+		this.pedidos = pedidos;
+	}
+
+
+	public String getImg_usuario() {
+		return img_usuario;
+	}
+
+
+	public void setImg_usuario(String img_usuario) {
+		this.img_usuario = img_usuario;
+	}
+
+
+	public Usuario(Integer id_usuario, String nome, String email, List<Venda> pedidos, String senha, String telefone,
+			Boolean recuperarSenha, Boolean adm, String img_usuario) {
+		super();
+		this.id_usuario = id_usuario;
+		this.nome = nome;
+		this.email = email;
+		this.pedidos = pedidos;
+		this.senha = senha;
+		this.telefone = telefone;
+		this.recuperarSenha = recuperarSenha;
+		this.adm = adm;
+		this.img_usuario = img_usuario;
+	}
 
 
 	public Usuario() {
@@ -127,7 +163,7 @@ public class Usuario {
 	}
 
 	public UsuarioDTO toUsuarioDTO() {
-		UsuarioDTO usuarioDTO = new UsuarioDTO(this.getNome(), this.getEmail(), this.getTelefone());
+		UsuarioDTO usuarioDTO = new UsuarioDTO(this.getNome(), this.getEmail(), this.getTelefone(), this.getImg_usuario());
 		return usuarioDTO;
 	}
 

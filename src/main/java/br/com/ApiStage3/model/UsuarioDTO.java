@@ -5,7 +5,24 @@ public class UsuarioDTO {
 	private String nome;
 	private String email;
 	private String telefone;
+	private String img_usuario;
 	
+
+	public UsuarioDTO(String nome, String email, String telefone, String img_usuario) {
+		super();
+		this.nome = nome;
+		this.email = email;
+		this.telefone = telefone;
+		this.img_usuario = img_usuario;
+	}
+
+	public String getImg_usuario() {
+		return img_usuario;
+	}
+
+	public void setImg_usuario(String img_usuario) {
+		this.img_usuario = img_usuario;
+	}
 
 	public UsuarioDTO() {}
 	

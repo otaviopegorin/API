@@ -4,6 +4,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
 import javax.mail.internet.MimeMessage;
@@ -27,6 +28,8 @@ public class UsuarioService {
 	@Autowired(required = true)
 	private UsuarioRepository usuarioRepository;
 	
+	Random gerador = new Random();
+	
 	public List<UsuarioDTO> getAllUsuarios() {
 		List<UsuarioDTO> usuariosDTO = new ArrayList<UsuarioDTO>();
 		List<Usuario> usuarios = new ArrayList<Usuario>(usuarioRepository.findAll());
@@ -49,6 +52,8 @@ public class UsuarioService {
 	
 	public Boolean salvaUsuario(Usuario usuario) {
 		String strHash = codificaSenha(usuario.getSenha());
+		int a = gerador.nextInt(20);
+		usuario.setImg_usuario("http://projetoscti.com.br/projetoscti02/testesPegorin/files/icon"+a+".png");
 		usuario.setSenha(strHash);
 		try {
 			usuarioRepository.save(usuario);
@@ -57,6 +62,7 @@ public class UsuarioService {
 			System.out.println("Erro ao salvar usuario: "+e.getMessage());
 			return false;
 		}
+		
 	}
 
 	public int autenticaUsuario(String email, String senha) {
