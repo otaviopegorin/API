@@ -52,7 +52,9 @@ public class UsuarioService {
 	
 	public Boolean salvaUsuario(Usuario usuario) {
 		if(usuario.getSenha() == null || usuario.getSenha() == "") {
-			usuarioRepository.save(usuario);
+			Usuario usu = usuarioRepository.findByEmail(usuario.getEmail());
+			usu.setNotificacao(usuario.getNotificacao());
+			usuarioRepository.save(usu);
 			return true;
 		}
 		String strHash = codificaSenha(usuario.getSenha());
