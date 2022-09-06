@@ -51,7 +51,7 @@ public class UsuarioService {
 	}
 	
 	public Boolean salvaUsuario(Usuario usuario) {
-		if(usuario.getSenha().isBlank() || usuario.getSenha() == null || usuario.getSenha() == "") {
+		if(usuario.getSenha() == null || usuario.getSenha() == "") {
 			usuarioRepository.save(usuario);
 			return true;
 		}
