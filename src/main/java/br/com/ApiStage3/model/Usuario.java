@@ -28,7 +28,7 @@ public class Usuario {
 	private Boolean recuperarSenha;
 	private Boolean adm;
 	private String img_usuario;
-	private boolean notificacao = true;
+	private Boolean notificacao = true;
 
 	public Usuario(Integer id_usuario, String nome, String email, List<Venda> pedidos, String senha, String telefone,
 			Boolean recuperarSenha, Boolean adm, String img_usuario, boolean notificacao) {
@@ -71,7 +71,7 @@ public class Usuario {
 		this.adm = adm;
 	}
 	
-	public Usuario(String email,boolean notificacao) {
+	public Usuario(String email,Boolean notificacao) {
 		this.email = email;
 		this.notificacao = notificacao;
 	}
