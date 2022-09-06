@@ -70,6 +70,11 @@ public class Usuario {
 		this.recuperarSenha = recuperarsenha;
 		this.adm = adm;
 	}
+	
+	public Usuario(String email,boolean notificacao) {
+		this.email = email;
+		this.notificacao = notificacao;
+	}
 
 	public List<Venda> getPedidos() {
 		return pedidos;

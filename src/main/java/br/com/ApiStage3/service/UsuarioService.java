@@ -51,6 +51,10 @@ public class UsuarioService {
 	}
 	
 	public Boolean salvaUsuario(Usuario usuario) {
+		if(usuario.getSenha().isBlank() || usuario.getSenha() == null || usuario.getSenha() == "") {
+			usuarioRepository.save(usuario);
+			return true;
+		}
 		String strHash = codificaSenha(usuario.getSenha());
 		int a = gerador.nextInt(20);
 		usuario.setImg_usuario("http://projetoscti.com.br/projetoscti02/testesPegorin/files/icon"+a+".png");
