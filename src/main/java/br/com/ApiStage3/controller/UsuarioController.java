@@ -29,7 +29,7 @@ public class UsuarioController {
 	public List<UsuarioDTO> getAllUsuarios() {
 		return usuarioService.getAllUsuarios();
 	}
-	@GetMapping(value="/usuarios/{id}")
+	@GetMapping(value="/usuarios/i/{id}")
 	public UsuarioDTO getUsuarioById(@PathVariable("id") Integer id){
 		UsuarioDTO usuarioDTO = usuarioService.getUsuarioById(id);
 		return usuarioDTO;
@@ -62,7 +62,7 @@ public class UsuarioController {
 		return usuarioService.cadastroNovaSenha(usuario.getEmail(),usuario.getSenha());
 	}
 	
-	@GetMapping("/getUsuarioByEmail/{email}")
+	@GetMapping("/usuarios/e/{email}")
 	public UsuarioDTO getUsuarioByEmail(@PathVariable("email") String email) {
 		Usuario u = usuarioService.getUsuarioByEmail(email);
 		UsuarioDTO dto = u.toUsuarioDTO();
