@@ -1,12 +1,7 @@
 package br.com.ApiStage3.controller;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.List;
-import java.util.Properties;
 
-import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,12 +29,12 @@ public class UsuarioController {
 	public List<UsuarioDTO> getAllUsuarios() {
 		return usuarioService.getAllUsuarios();
 	}
-	@GetMapping(value="/getUsuarioById/{id}")
+	@GetMapping(value="/usuarios/{id}")
 	public UsuarioDTO getUsuarioById(@PathVariable("id") Integer id){
 		UsuarioDTO usuarioDTO = usuarioService.getUsuarioById(id);
 		return usuarioDTO;
 	}
-	@PostMapping("/criarUsuario")
+	@PostMapping("/usuario")
 	public Boolean criaUsuario(@RequestBody Usuario usuario) {
 		return usuarioService.salvaUsuario(usuario);
 	} 
@@ -52,17 +47,17 @@ public class UsuarioController {
 //	    "adm":true,
 //		"recuperarsenha":false
 //	}
-	@PostMapping("/autenticarUsuario")
+	@PostMapping("/usuario/autentica")
 	public int autenticaUsuario(@RequestBody Usuario usuario) {
 		System.out.println("Email: "+usuario.getEmail()+", Senha: "+usuario.getSenha());
 		return usuarioService.autenticaUsuario(usuario.getEmail(),usuario.getSenha());
 	}
 	
-	@PostMapping("/recuperaSenha")
+	@PostMapping("/usuario/recuperaSenha")
 	public int recuperarSenha(@RequestBody Usuario usuario){
 		return usuarioService.recuperaSenha(usuario.getEmail());
 	}
-	@PostMapping("/cadastroNovaSenha")
+	@PostMapping("/usuario/cadastroNovaSenha")
 	public boolean cadastroNovaSenha(@RequestBody Usuario usuario){
 		return usuarioService.cadastroNovaSenha(usuario.getEmail(),usuario.getSenha());
 	}

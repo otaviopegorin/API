@@ -6,14 +6,23 @@ public class UsuarioDTO {
 	private String email;
 	private String telefone;
 	private String img_usuario;
-	
+	private boolean notificacao;
 
-	public UsuarioDTO(String nome, String email, String telefone, String img_usuario) {
+	public UsuarioDTO(String nome, String email, String telefone, String img_usuario, boolean notificacao) {
 		super();
 		this.nome = nome;
 		this.email = email;
 		this.telefone = telefone;
 		this.img_usuario = img_usuario;
+		this.notificacao = notificacao;
+	}
+
+	public boolean isNotificacao() {
+		return notificacao;
+	}
+
+	public void setNotificacao(boolean notificacao) {
+		this.notificacao = notificacao;
 	}
 
 	public String getImg_usuario() {
@@ -24,14 +33,15 @@ public class UsuarioDTO {
 		this.img_usuario = img_usuario;
 	}
 
-	public UsuarioDTO() {}
-	
+	public UsuarioDTO() {
+	}
+
 	public UsuarioDTO(String nome, String email, String telefone) {
 		this.nome = nome;
 		this.email = email;
 		this.telefone = telefone;
-}
-	
+	}
+
 	public String getNome() {
 		return nome;
 	}

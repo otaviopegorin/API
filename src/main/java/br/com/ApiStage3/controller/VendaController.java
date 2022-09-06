@@ -25,12 +25,12 @@ public class VendaController {
 		return vendaService.getAll();
 	}
 	
-	@GetMapping(value="/getVendaPorIdUsuario/{id}")
+	@GetMapping(value="/vendas/{id}")
 	public List<VendaDTO> getAllUsuarios(@PathVariable("id") Integer id) {
 		return vendaService.findByIdUsuario(id);
 	}
 	
-	@PostMapping(path =  "/cadastroNovaVenda",consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@PostMapping(path =  "/venda",consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public int cadastroNovaVenda(@RequestBody AuxVendaDTO content) {
 		return vendaService.cadastroNovaVenda(content.getEmail(), content.getProdutos(), content.getPreco());
 	}
