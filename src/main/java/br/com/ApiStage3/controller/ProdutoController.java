@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -48,7 +49,8 @@ public class ProdutoController {
 	}
 	@CrossOrigin
 	@PostMapping("/criarProduto")
-	public ModelAndView criaUsuario( @RequestParam String UUID,
+	@ResponseBody
+	public String criaUsuario( @RequestParam String UUID,
 								@RequestParam String nome, 
 								@RequestParam String preco, 
 								@RequestParam String categoria,
@@ -58,13 +60,9 @@ public class ProdutoController {
 		System.out.println(UUID);
 		Produto p = new Produto(nome, Double.valueOf(preco), categoria, descricao, Integer.valueOf(qtd_estoque),"http://projetoscti.com.br/projetoscti02/testesPegorin/"+UUID+foto.getOriginalFilename());
 		if(produtoService.salvarProduto(p)) {
-			ModelAndView modelAndView = new ModelAndView();
-		    modelAndView.setViewName("succes");
-		    return modelAndView;
+		    return "succes";
 		}else {
-			ModelAndView modelAndView = new ModelAndView();
-		    modelAndView.setViewName("error");
-		    return modelAndView;
+		    return "error";
 		}
 	} 
 	
