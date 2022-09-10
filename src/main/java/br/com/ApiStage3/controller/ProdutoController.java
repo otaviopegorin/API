@@ -62,12 +62,12 @@ public class ProdutoController {
 		if(produtoService.salvarProduto(p)) {
 			return ResponseEntity
 			        .status(HttpStatus.MOVED_PERMANENTLY)
-			        .header(HttpHeaders.LOCATION, "/succes.html")
+			        .header(HttpHeaders.LOCATION, "/app-projetosestagio-api/src/main/resources/views/succes.html")
 			        .build();
 		}else {
 			return ResponseEntity
 			        .status(HttpStatus.MOVED_PERMANENTLY)
-			        .header(HttpHeaders.LOCATION, "/error.html")
+			        .header(HttpHeaders.LOCATION, "/app-projetosestagio-api/src/main/resources/views/error.html")
 			        .build();		}
 	} 
 	
