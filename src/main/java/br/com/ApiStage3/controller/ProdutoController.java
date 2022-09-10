@@ -59,11 +59,11 @@ public class ProdutoController {
 		Produto p = new Produto(nome, Double.valueOf(preco), categoria, descricao, Integer.valueOf(qtd_estoque),"http://projetoscti.com.br/projetoscti02/testesPegorin/"+UUID+foto.getOriginalFilename());
 		if(produtoService.salvarProduto(p)) {
 			ModelAndView modelAndView = new ModelAndView();
-		    modelAndView.setViewName("succes.html");
+		    modelAndView.setViewName("succes");
 		    return modelAndView;
 		}else {
 			ModelAndView modelAndView = new ModelAndView();
-		    modelAndView.setViewName("error.html");
+		    modelAndView.setViewName("error");
 		    return modelAndView;
 		}
 	} 
