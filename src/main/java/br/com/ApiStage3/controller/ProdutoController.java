@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -46,8 +49,8 @@ public class ProdutoController {
 		return produtoService.getByCategoria(categoria);
 	}
 	@CrossOrigin
-	@PostMapping("/criarProduto")
-	public String criaUsuario( @RequestParam String UUID,
+	@PostMapping("/criarProduto" )
+	public ResponseEntity<Object> criaUsuario( @RequestParam String UUID,
 								@RequestParam String nome, 
 								@RequestParam String preco, 
 								@RequestParam String categoria,
@@ -57,10 +60,15 @@ public class ProdutoController {
 		System.out.println(UUID);
 		Produto p = new Produto(nome, Double.valueOf(preco), categoria, descricao, Integer.valueOf(qtd_estoque),"http://projetoscti.com.br/projetoscti02/testesPegorin/"+UUID+foto.getOriginalFilename());
 		if(produtoService.salvarProduto(p)) {
-		    return "succes";
+			return ResponseEntity
+			        .status(HttpStatus.MOVED_PERMANENTLY)
+			        .header(HttpHeaders.LOCATION, "/succes.html")
+			        .build();
 		}else {
-		    return "error";
-		}
+			return ResponseEntity
+			        .status(HttpStatus.MOVED_PERMANENTLY)
+			        .header(HttpHeaders.LOCATION, "/error.html")
+			        .build();		}
 	} 
 	
 	
