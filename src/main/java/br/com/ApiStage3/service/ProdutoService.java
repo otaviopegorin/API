@@ -69,8 +69,8 @@ public class ProdutoService {
 
 	public Boolean verificaCategoria(String categoria) {
 		if (categoria.equals("REFEICAO") || categoria.equals("LANCHES") || categoria.equals("BEBIDAS")
-				|| categoria.equals("DOCES") || categoria.equals("DOCES") || categoria.equals("SALGADOS")
-				|| categoria.equals("BALAS") || categoria.equals("SORVETES")) {
+				|| categoria.equals("DOCES") || categoria.equals("CAFE") || categoria.equals("SALGADOS")
+				|| categoria.equals("SALGADINHO") || categoria.equals("SORVETES")) {
 			return true;
 		}
 		return false;

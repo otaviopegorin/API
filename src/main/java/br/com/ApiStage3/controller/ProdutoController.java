@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import br.com.ApiStage3.model.Produto;
 import br.com.ApiStage3.model.ProdutoDTO;
@@ -47,7 +48,7 @@ public class ProdutoController {
 	}
 	@CrossOrigin
 	@PostMapping("/criarProduto")
-	public Boolean criaUsuario( @RequestParam String UUID,
+	public ModelAndView criaUsuario( @RequestParam String UUID,
 								@RequestParam String nome, 
 								@RequestParam String preco, 
 								@RequestParam String categoria,
@@ -56,7 +57,15 @@ public class ProdutoController {
 								@RequestParam MultipartFile foto) {
 		System.out.println(UUID);
 		Produto p = new Produto(nome, Double.valueOf(preco), categoria, descricao, Integer.valueOf(qtd_estoque),"http://projetoscti.com.br/projetoscti02/testesPegorin/"+UUID+foto.getOriginalFilename());
-		return produtoService.salvarProduto(p);
+		if(produtoService.salvarProduto(p)) {
+			ModelAndView modelAndView = new ModelAndView();
+		    modelAndView.setViewName("succes.html");
+		    return modelAndView;
+		}else {
+			ModelAndView modelAndView = new ModelAndView();
+		    modelAndView.setViewName("error.html");
+		    return modelAndView;
+		}
 	} 
 	
 	
