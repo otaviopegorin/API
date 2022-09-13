@@ -79,6 +79,9 @@ public class UsuarioService {
 				if(usuario.getRecuperarSenha() == true) {
 					return -1;
 				}
+				if(usuario.getAdm() == true) {
+					return 2;
+				}
 				return 1;
 			}else {
 				return 0;
