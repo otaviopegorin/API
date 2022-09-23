@@ -12,7 +12,7 @@ import br.com.ApiStage3.model.Venda;
 @Repository
 public interface VendaRepository extends JpaRepository<Venda, Integer> {
 
-	@Query(value="SELECT * FROM VENDA WHERE excluido = 0 ", nativeQuery = true)
+	@Query(value="SELECT * FROM VENDA WHERE excluido = false ", nativeQuery = true)
 	List<Venda> findAll();
 	
 	@Query(value="SELECT * FROM VENDA WHERE :cod_usuario = usuario_id_usuario and excluido = 0", nativeQuery = true)
