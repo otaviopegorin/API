@@ -74,7 +74,8 @@ public class ProdutoController {
 		p.setDescricao(descricao);
 		p.setQtd_estoque(Integer.valueOf(qtd_estoque));
 		p.setPreco(Integer.valueOf(preco));
-		if(foto.getOriginalFilename() != null || !foto.getOriginalFilename().equals("") || !foto.getOriginalFilename().isEmpty() || foto.getBytes() != null || foto.getSize() != 0) {
+		System.out.println(foto.getOriginalFilename());
+		if(foto.getOriginalFilename() != null || !foto.getOriginalFilename().equals("") || !foto.getOriginalFilename().isEmpty() ) {
 			p.setImg_produto("http://projetoscti.com.br/projetoscti02/testesPegorin/" + UUID + foto.getOriginalFilename());
 		}
 		
