@@ -137,7 +137,7 @@ public class Produto {
 	}
 
 	public ProdutoDTO toDTO() {
-		ProdutoDTO dto = new ProdutoDTO(nome, preco, categoria, descricao, qtd_estoque, excluido, data_excluido, img_produto);
+		ProdutoDTO dto = new ProdutoDTO(id_produto, nome, preco, categoria, descricao, qtd_estoque, excluido, data_excluido, img_produto);
 		return dto;
 	}
 }

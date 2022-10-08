@@ -2,6 +2,7 @@ package br.com.ApiStage3.model;
 
 public class ProdutoDTO {
 
+	private Integer id;
 	private String nome;
 	private Double preco;
 	private String categoria;
@@ -12,9 +13,10 @@ public class ProdutoDTO {
 	private String data_excluido;
 	private String img_produto;
 
-	public ProdutoDTO(String nome, double preco, String categoria, String descricao, int qtd_estoque,
+	public ProdutoDTO(Integer id, String nome, double preco, String categoria, String descricao, int qtd_estoque,
 			Boolean excluido, String data_excluido, String img_produto) {
 		super();
+		this.id = id;
 		this.nome = nome;
 		this.preco = preco;
 		this.categoria = categoria;
@@ -23,6 +25,14 @@ public class ProdutoDTO {
 		this.excluido = excluido;
 		this.data_excluido = data_excluido;
 		this.img_produto = img_produto;
+	}
+	
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	
 	public int getQuantidade() {
