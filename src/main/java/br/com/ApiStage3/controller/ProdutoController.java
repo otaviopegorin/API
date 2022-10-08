@@ -1,5 +1,6 @@
 package br.com.ApiStage3.controller;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
@@ -63,7 +64,7 @@ public class ProdutoController {
 	@PostMapping("/alterarProduto")
 	public Boolean alterarProduto(@RequestParam String ID,@RequestParam String UUID, @RequestParam String nome, @RequestParam String preco,
 			@RequestParam String categoria, @RequestParam String descricao, @RequestParam String qtd_estoque,
-			@RequestParam MultipartFile foto) {
+			@RequestParam MultipartFile foto) throws IOException {
 		Produto p = produtoService.getProdutoById(ID);
 		if(p == null ) {
 			return false;
@@ -73,7 +74,7 @@ public class ProdutoController {
 		p.setDescricao(descricao);
 		p.setQtd_estoque(Integer.valueOf(qtd_estoque));
 		p.setPreco(Integer.valueOf(preco));
-		if(foto.getOriginalFilename() != null || !foto.getOriginalFilename().equals("") || !foto.getOriginalFilename().isEmpty()) {
+		if(foto.getOriginalFilename() != null || !foto.getOriginalFilename().equals("") || !foto.getOriginalFilename().isEmpty() || foto.getBytes() != null || foto.getSize() != 0) {
 			p.setImg_produto("http://projetoscti.com.br/projetoscti02/testesPegorin/" + UUID + foto.getOriginalFilename());
 		}
 		
