@@ -62,11 +62,11 @@ public class ProdutoController {
 
 	@CrossOrigin
 	@PostMapping("/alterarProduto")
-	public Boolean alterarProduto(@RequestParam String ID,@RequestParam String UUID, @RequestParam String nome, @RequestParam String preco,
-			@RequestParam String categoria, @RequestParam String descricao, @RequestParam String qtd_estoque,
-			@RequestParam MultipartFile foto) throws IOException {
+	public Boolean alterarProduto(@RequestParam String ID, @RequestParam String UUID, @RequestParam String nome,
+			@RequestParam String preco, @RequestParam String categoria, @RequestParam String descricao,
+			@RequestParam String qtd_estoque, @RequestParam MultipartFile foto) throws IOException {
 		Produto p = produtoService.getProdutoById(ID);
-		if(p == null ) {
+		if (p == null) {
 			return false;
 		}
 		p.setNome(nome);
@@ -74,15 +74,19 @@ public class ProdutoController {
 		p.setDescricao(descricao);
 		p.setQtd_estoque(Integer.valueOf(qtd_estoque));
 		p.setPreco(Integer.valueOf(preco));
-		System.out.println("teste"+foto.getOriginalFilename());
-		if(foto.getOriginalFilename().trim() != null || !foto.getOriginalFilename().trim().equals("") || !foto.getOriginalFilename().isEmpty() || !foto.getOriginalFilename().trim().isEmpty()) {
-			p.setImg_produto("http://projetoscti.com.br/projetoscti02/testesPegorin/" + UUID + foto.getOriginalFilename());
+		System.out.println("teste" + foto.getOriginalFilename());
+		if (foto.getOriginalFilename().trim() == null || foto.getOriginalFilename().trim().equals("")
+				|| foto.getOriginalFilename().isEmpty() || foto.getOriginalFilename().trim().isEmpty()) {
+			System.out.println("está vazio");
+		} else {
+			p.setImg_produto(
+					"http://projetoscti.com.br/projetoscti02/testesPegorin/" + UUID + foto.getOriginalFilename());
 		}
-		
+
 		try {
 			produtoService.salvarProduto(p);
 			return true;
-		}catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
 		}
