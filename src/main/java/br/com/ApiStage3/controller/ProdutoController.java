@@ -61,10 +61,10 @@ public class ProdutoController {
 
 	@CrossOrigin
 	@PostMapping("/alterarProduto")
-	public Boolean alterarProduto(@RequestParam String id,@RequestParam String UUID, @RequestParam String nome, @RequestParam String preco,
+	public Boolean alterarProduto(@RequestParam String ID,@RequestParam String UUID, @RequestParam String nome, @RequestParam String preco,
 			@RequestParam String categoria, @RequestParam String descricao, @RequestParam String qtd_estoque,
 			@RequestParam MultipartFile foto) {
-		Produto p = produtoService.getProdutoById(id);
+		Produto p = produtoService.getProdutoById(ID);
 		if(p == null ) {
 			return false;
 		}
