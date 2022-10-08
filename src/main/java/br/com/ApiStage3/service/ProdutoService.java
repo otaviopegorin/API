@@ -1,27 +1,14 @@
 package br.com.ApiStage3.service;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
-import org.apache.commons.net.ftp.FTPClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import br.com.ApiStage3.model.Produto;
 import br.com.ApiStage3.model.ProdutoDTO;
 import br.com.ApiStage3.repository.ProdutoRepository;
-import ch.qos.logback.classic.Level;
-import ch.qos.logback.classic.Logger;
 
 @Service
 public class ProdutoService {
@@ -84,6 +71,11 @@ public class ProdutoService {
 			e.printStackTrace();
 			return false;
 		}
+	}
+
+	public Produto getProdutoById(String id) {
+		Produto p = produtoRepository.getById(Integer.valueOf(id));
+		return p;
 	}
 
 	

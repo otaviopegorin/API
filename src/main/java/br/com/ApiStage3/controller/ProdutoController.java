@@ -61,11 +61,29 @@ public class ProdutoController {
 
 	@CrossOrigin
 	@PostMapping("/alterarProduto")
-	public Boolean alterarProduto(@RequestParam String UUID, @RequestParam String nome, @RequestParam String preco,
+	public Boolean alterarProduto(@RequestParam String id,@RequestParam String UUID, @RequestParam String nome, @RequestParam String preco,
 			@RequestParam String categoria, @RequestParam String descricao, @RequestParam String qtd_estoque,
 			@RequestParam MultipartFile foto) {
+		Produto p = produtoService.getProdutoById(id);
+		if(p == null ) {
+			return false;
+		}
+		p.setNome(nome);
+		p.setCategoria(categoria);
+		p.setDescricao(descricao);
+		p.setQtd_estoque(Integer.valueOf(qtd_estoque));
+		p.setPreco(Integer.valueOf(preco));
+		if(foto != null) {
+			p.setImg_produto("http://projetoscti.com.br/projetoscti02/testesPegorin/" + UUID + foto.getOriginalFilename());
+		}
 		
-		return true;
+		try {
+			produtoService.salvarProduto(p);
+			return true;
+		}catch(Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 }
