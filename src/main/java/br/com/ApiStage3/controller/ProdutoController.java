@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
 import br.com.ApiStage3.model.Produto;
 import br.com.ApiStage3.model.ProdutoDTO;
@@ -53,26 +52,22 @@ public class ProdutoController {
 
 	@CrossOrigin
 	@PostMapping("/criarProduto")
-	public ModelAndView criaProduto(@RequestParam String UUID, @RequestParam String nome, @RequestParam String preco,
+	public Boolean criaProduto(@RequestParam String UUID, @RequestParam String nome, @RequestParam String preco,
 			@RequestParam String categoria, @RequestParam String descricao, @RequestParam String qtd_estoque,
 			@RequestParam MultipartFile foto) {
 		Produto p = new Produto(nome, Double.valueOf(preco), categoria, descricao, Integer.valueOf(qtd_estoque),
 				"http://projetoscti.com.br/projetoscti02/testesPegorin/" + UUID + foto.getOriginalFilename());
-		if(produtoService.salvarProduto(p)) {
-			return new ModelAndView("views/succes");
-		}else {
-			return new ModelAndView("views/error");
-		}
+		return produtoService.salvarProduto(p);
 	}
 
 	@CrossOrigin
 	@PostMapping("/alterarProduto")
-	public ModelAndView alterarProduto(@RequestParam String ID, @RequestParam String UUID, @RequestParam String nome,
+	public Boolean alterarProduto(@RequestParam String ID, @RequestParam String UUID, @RequestParam String nome,
 			@RequestParam String preco, @RequestParam String categoria, @RequestParam String descricao,
 			@RequestParam String qtd_estoque, @RequestParam MultipartFile foto) throws IOException {
 		Produto p = produtoService.getProdutoById(ID);
 		if (p == null) {
-			return new ModelAndView("views/error");
+			return false;
 		}
 		p.setNome(nome);
 		p.setCategoria(categoria);
@@ -90,10 +85,10 @@ public class ProdutoController {
 
 		try {
 			produtoService.salvarProduto(p);
-			return new ModelAndView("views/succes");
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new ModelAndView("views/error");
+			return false;
 		}
 	}
 
