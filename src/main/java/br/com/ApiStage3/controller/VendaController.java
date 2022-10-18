@@ -43,4 +43,10 @@ public class VendaController {
 		return vendaService.getNumeroPedidos();
 	}
 	
+	@CrossOrigin
+	@GetMapping("lucroDiario")
+	public double lucroDiario() {
+		return vendaService.lucroDiario();
+	}
+	
 }

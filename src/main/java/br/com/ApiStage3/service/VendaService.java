@@ -77,4 +77,8 @@ public class VendaService {
 	public int getNumeroPedidos() {
 		return vendaRepository.getNumeroPedidos();
 	}
+
+	public double lucroDiario() {
+		return vendaRepository.getLucroDiario();
+	}
 }
