@@ -1,6 +1,7 @@
 package br.com.ApiStage3.controller;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -90,6 +91,15 @@ public class ProdutoController {
 			e.printStackTrace();
 			return false;
 		}
+	}
+	
+	@PostMapping()
+	@CrossOrigin
+	public Boolean excluirProduto(@RequestParam String id) {
+		Produto p = produtoService.getProdutoById(id);
+		p.setData_excluido(LocalDateTime.now().toString());
+		p.setExcluido(true);
+		return produtoService.salvarProduto(p);
 	}
 
 }
