@@ -275,4 +275,9 @@ public class UsuarioService {
 		}
 		
 	}
+
+	public int getNumeroDeUsuarios() {
+		return 	usuarioRepository.getNumeroUsuarios();
+	}
+
 }
