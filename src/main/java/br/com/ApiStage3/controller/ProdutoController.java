@@ -94,7 +94,7 @@ public class ProdutoController {
 	}
 	
 	@CrossOrigin
-	@PostMapping("/excluiProduto/{id}")
+	@GetMapping("/excluiProduto/{id}")
 	public Boolean excluirProduto(@PathVariable("id") String id) {
 		Produto p = produtoService.getProdutoById(id);
 		p.setData_excluido(LocalDateTime.now().toString());
