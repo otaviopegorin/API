@@ -75,7 +75,6 @@ public class VendaService {
 	}
 
 	public int getNumeroPedidos() {
-		vendaRepository.getNumeroPedidos();
-		return 0;
+		return vendaRepository.getNumeroPedidos();
 	}
 }
