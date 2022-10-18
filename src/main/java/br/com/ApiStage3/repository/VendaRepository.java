@@ -17,4 +17,7 @@ public interface VendaRepository extends JpaRepository<Venda, Integer> {
 	
 	@Query(value="SELECT * FROM VENDA WHERE :cod_usuario = usuario_id_usuario and excluido = 0", nativeQuery = true)
     List<Venda> findVendaByIdUsuario(@Param("cod_usuario") Integer cod_usuario);
+
+	@Query(value=" SELECT COUNT(id_venda) FROM venda where excluido = false ", nativeQuery = true)
+	int getNumeroPedidos();
 }

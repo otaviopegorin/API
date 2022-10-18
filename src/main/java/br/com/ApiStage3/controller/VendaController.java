@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,6 +21,7 @@ public class VendaController {
 	@Autowired
 	private VendaService vendaService;
 	
+	
 	@GetMapping("/vendas")
 	public List<VendaDTO> getAllVendas() {
 		return vendaService.getAll();
@@ -33,6 +35,12 @@ public class VendaController {
 	@PostMapping(path =  "/venda",consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public int cadastroNovaVenda(@RequestBody AuxVendaDTO content) {
 		return vendaService.cadastroNovaVenda(content.getEmail(), content.getProdutos(), content.getPreco());
+	}
+	
+	@CrossOrigin
+	@GetMapping("novosPedidos")
+	public int numeroDeVendas() {
+		return vendaService.getNumeroPedidos();
 	}
 	
 }
