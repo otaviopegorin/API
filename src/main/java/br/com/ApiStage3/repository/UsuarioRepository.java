@@ -12,6 +12,6 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
 
 	Usuario findByEmail(String email);
 
-	@Query(value="SELECT COUNT(ID) FROM usuario WHERE excluido != true ", nativeQuery = true)
+	@Query(value=" SELECT COUNT(id_usuario) FROM usuario", nativeQuery = true)
 	int getNumeroUsuarios();
 }
