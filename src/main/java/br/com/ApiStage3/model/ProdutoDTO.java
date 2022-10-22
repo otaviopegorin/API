@@ -11,7 +11,37 @@ public class ProdutoDTO {
 	private int quantidade = 0;
 	private Boolean excluido;
 	private String data_excluido;
+	
+	public ProdutoDTO(Integer id, String nome, Double preco, String categoria, String descricao, int qtd_estoque,
+			int quantidade, Boolean excluido, String data_excluido, String img_produto, Boolean noCarrinho,
+			Boolean selecionado) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.preco = preco;
+		this.categoria = categoria;
+		this.descricao = descricao;
+		this.qtd_estoque = qtd_estoque;
+		this.quantidade = quantidade;
+		this.excluido = excluido;
+		this.data_excluido = data_excluido;
+		this.img_produto = img_produto;
+		this.noCarrinho = noCarrinho;
+		this.selecionado = selecionado;
+	}
+
 	private String img_produto;
+	private Boolean noCarrinho = false;
+	
+	public Boolean getSelecionado() {
+		return selecionado;
+	}
+
+	public void setSelecionado(Boolean selecionado) {
+		this.selecionado = selecionado;
+	}
+
+	private Boolean selecionado = false;
 
 	public ProdutoDTO(Integer id, String nome, double preco, String categoria, String descricao, int qtd_estoque,
 			Boolean excluido, String data_excluido, String img_produto) {
@@ -45,6 +75,14 @@ public class ProdutoDTO {
 
 	public void setPreco(Double preco) {
 		this.preco = preco;
+	}
+	
+	public Boolean getNoCarrinho() {
+		return noCarrinho;
+	}
+
+	public void setNoCarrinho(Boolean noCarrinho) {
+		this.noCarrinho = noCarrinho;
 	}
 
 
