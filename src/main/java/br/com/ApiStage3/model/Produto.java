@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,8 +18,8 @@ public class Produto {
 	private Integer id_produto;
 	@Column(unique = true)
 	private String nome;
-	@OneToMany(mappedBy = "produto")
-	private List<Item_venda> item_venda;
+	@OneToMany(mappedBy = "produto", fetch = FetchType.LAZY)
+	private List<Item_venda> itens;
 	private double preco;
 	private String categoria;
 	private String descricao;

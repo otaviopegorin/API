@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,8 +19,8 @@ public class Venda {
 	private Integer id_venda;
 	@ManyToOne
 	private Usuario usuario;
-	@OneToMany(mappedBy = "venda")
-	private List<Item_venda> produtos;
+    @OneToMany(mappedBy = "venda", fetch = FetchType.LAZY)
+    private List<Item_venda> itens;
 	private LocalDateTime data_venda;
 	private double preco;
 	private Boolean excluido = false;
@@ -33,7 +34,7 @@ public class Venda {
 	public Venda(Usuario usuario, List<Item_venda> produtos, double preco) {
 		super();
 		this.usuario = usuario;
-		this.produtos = produtos;
+		this.itens = produtos;
 		this.preco = preco;
 	}
 
@@ -43,7 +44,7 @@ public class Venda {
 		super();
 		this.id_venda = id_venda;
 		this.usuario = usuario;
-		this.produtos = produtos;
+		this.itens = produtos;
 		this.data_venda = data_venda;
 		this.preco = preco;
 		this.excluido = excluido;
@@ -75,11 +76,11 @@ public class Venda {
 	}
 
 	public List<Item_venda> getProdutos() {
-		return produtos;
+		return itens;
 	}
 
 	public void setProdutos(List<Item_venda> produtos) {
-		this.produtos = produtos;
+		this.itens = produtos;
 	}
 
 	public LocalDateTime getData_venda() {

@@ -2,7 +2,6 @@ package br.com.ApiStage3.model;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -20,8 +19,8 @@ public class Usuario {
 	private String nome;
 	@Column(unique = true)
 	private String email;
-	@OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Venda> pedidos;
+	@OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
+	private List<Venda> vendas;
 	private String senha;
 	@Column(unique = true)
 	private String telefone;
@@ -36,7 +35,7 @@ public class Usuario {
 		this.id_usuario = id_usuario;
 		this.nome = nome;
 		this.email = email;
-		this.pedidos = pedidos;
+		this.vendas = pedidos;
 		this.senha = senha;
 		this.telefone = telefone;
 		this.recuperarSenha = recuperarSenha;
@@ -77,11 +76,11 @@ public class Usuario {
 	}
 
 	public List<Venda> getPedidos() {
-		return pedidos;
+		return vendas;
 	}
 
 	public void setPedidos(List<Venda> pedidos) {
-		this.pedidos = pedidos;
+		this.vendas = pedidos;
 	}
 
 	public String getImg_usuario() {
