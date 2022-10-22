@@ -34,6 +34,7 @@ public class VendaController {
 	
 	@PostMapping(path =  "/venda",consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public int cadastroNovaVenda(@RequestBody AuxVendaDTO content) {
+		System.out.println(content);
 		return vendaService.cadastroNovaVenda(content.getEmail(), content.getProdutos(), content.getPreco());
 	}
 	
