@@ -33,7 +33,7 @@ public class VendaController {
 	}
 	
 	@PostMapping(path =  "/venda",consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public int cadastroNovaVenda(@RequestBody List<ProdutoDTO> content) {
+	public int cadastroNovaVenda(@RequestBody List<ProdutoDTO> produtos) {
 		content.forEach(a->{
 			System.out.println(a.getNome());
 		});
