@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.ApiStage3.model.AuxVendaDTO;
+import br.com.ApiStage3.model.ProdutoDTO;
 import br.com.ApiStage3.model.VendaDTO;
 import br.com.ApiStage3.service.VendaService;
 
@@ -33,9 +33,11 @@ public class VendaController {
 	}
 	
 	@PostMapping(path =  "/venda",consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public int cadastroNovaVenda(@RequestBody AuxVendaDTO content) {
-		System.out.println(content);
-		return vendaService.cadastroNovaVenda(content.getEmail(), content.getProdutos(), content.getPreco());
+	public void cadastroNovaVenda(@RequestBody List<ProdutoDTO> content) {
+		content.forEach(a->{
+			System.out.println(a.getNome());
+		});
+//		return vendaService.cadastroNovaVenda(content.getEmail(), content.getProdutos(), content.getPreco());
 	}
 	
 	@CrossOrigin
