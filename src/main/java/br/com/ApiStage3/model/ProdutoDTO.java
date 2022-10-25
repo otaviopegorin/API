@@ -12,6 +12,8 @@ public class ProdutoDTO {
 	private Boolean excluido;
 	private String data_excluido;
 	
+	public ProdutoDTO() {}
+	
 	public ProdutoDTO(Integer id, String nome, Double preco, String categoria, String descricao, int qtd_estoque,
 			int quantidade, Boolean excluido, String data_excluido, String img_produto, Boolean noCarrinho,
 			Boolean selecionado) {
