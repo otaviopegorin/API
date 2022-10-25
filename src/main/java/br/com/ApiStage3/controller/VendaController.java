@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.ApiStage3.model.AuxItensVenda;
 import br.com.ApiStage3.model.ProdutoDTO;
 import br.com.ApiStage3.model.VendaDTO;
 import br.com.ApiStage3.service.VendaService;
@@ -35,11 +36,8 @@ public class VendaController {
 	
 	@CrossOrigin
 	@PostMapping(path =  "/venda",consumes = MediaType.APPLICATION_JSON_VALUE)
-	public int cadastroNovaVenda(@RequestBody ProdutoDTO produtos) {
-//		for (ProdutoDTO produtoDTO : produtos) {
-//			System.out.println(produtoDTO.getNome());
-//		}
-		System.out.println(produtos.getNome());
+	public int cadastroNovaVenda(@RequestBody AuxItensVenda itensVenda) {
+		System.out.println(itensVenda.getProdutos());
 		return 0;
 //		return vendaService.cadastroNovaVenda(content.getEmail(), content.getProdutos(), content.getPreco());
 	}
