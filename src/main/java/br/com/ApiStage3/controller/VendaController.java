@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.ApiStage3.model.ProdutoDTO;
@@ -21,19 +22,20 @@ public class VendaController {
 	@Autowired
 	private VendaService vendaService;
 	
-	
+	@CrossOrigin
 	@GetMapping("/vendas")
 	public List<VendaDTO> getAllVendas() {
 		return vendaService.getAll();
 	}
-	
+	@CrossOrigin
 	@GetMapping(value="/vendas/{id}")
 	public List<VendaDTO> getAllUsuarios(@PathVariable("id") Integer id) {
 		return vendaService.findByIdUsuario(id);
 	}
 	
+	@CrossOrigin
 	@PostMapping(path =  "/venda",consumes = MediaType.APPLICATION_JSON_VALUE)
-	public int cadastroNovaVenda(@RequestBody ProdutoDTO produtos) {
+	public int cadastroNovaVenda(@RequestParam ProdutoDTO produtos) {
 //		for (ProdutoDTO produtoDTO : produtos) {
 //			System.out.println(produtoDTO.getNome());
 //		}
