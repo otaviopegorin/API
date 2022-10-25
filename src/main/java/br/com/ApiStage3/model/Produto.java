@@ -16,7 +16,6 @@ public class Produto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id_produto;
-	@Column(unique = true)
 	private String nome;
 	@OneToMany(mappedBy = "produto", fetch = FetchType.LAZY)
 	private List<Item_venda> itens;
