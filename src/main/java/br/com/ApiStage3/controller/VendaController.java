@@ -37,11 +37,7 @@ public class VendaController {
 	@CrossOrigin
 	@PostMapping(path =  "/venda",consumes = MediaType.APPLICATION_JSON_VALUE)
 	public int cadastroNovaVenda(@RequestBody AuxItensVenda itensVenda) {
-		itensVenda.getProdutos().forEach(a ->{
-			System.out.println(a.getNome());
-		});
-		return 0;
-//		return vendaService.cadastroNovaVenda(content.getEmail(), content.getProdutos(), content.getPreco());
+		return vendaService.cadastroNovaVenda(itensVenda.getEmail(), itensVenda.getProdutos(), itensVenda.getPreco());
 	}
 	
 	@CrossOrigin

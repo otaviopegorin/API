@@ -58,7 +58,6 @@ public class UsuarioController {
 	@CrossOrigin
 	@PostMapping("/usuario/autentica")
 	public int autenticaUsuario(@RequestBody Usuario usuario) {
-		System.out.println("Email: "+usuario.getEmail()+", Senha: "+usuario.getSenha());
 		return usuarioService.autenticaUsuario(usuario.getEmail(),usuario.getSenha());
 	}
 	@CrossOrigin

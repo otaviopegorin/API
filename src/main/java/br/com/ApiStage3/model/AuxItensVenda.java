@@ -4,8 +4,16 @@ import java.util.List;
 
 public class AuxItensVenda {
 
+	private String email;
 	private List<ProdutoDTO> produtos;
 	private double preco;
+
+	public AuxItensVenda(String email, List<ProdutoDTO> produtos, double preco) {
+		super();
+		this.email = email;
+		this.produtos = produtos;
+		this.preco = preco;
+	}
 
 	public AuxItensVenda(List<ProdutoDTO> produtos, double preco) {
 		super();
@@ -35,5 +43,13 @@ public class AuxItensVenda {
 
 	public void setPreco(double preco) {
 		this.preco = preco;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }
