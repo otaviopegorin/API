@@ -33,8 +33,10 @@ public class VendaController {
 	}
 	
 	@PostMapping(path =  "/venda",consumes = MediaType.APPLICATION_JSON_VALUE)
-	public int cadastroNovaVenda(@RequestBody ProdutoDTO produtos) {
-		System.out.println(produtos.getNome());
+	public int cadastroNovaVenda(@RequestBody List<ProdutoDTO> produtos) {
+		for (ProdutoDTO produtoDTO : produtos) {
+			System.out.println(produtoDTO.getNome());
+		}
 		return 0;
 //		return vendaService.cadastroNovaVenda(content.getEmail(), content.getProdutos(), content.getPreco());
 	}
