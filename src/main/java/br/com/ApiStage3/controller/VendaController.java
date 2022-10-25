@@ -35,7 +35,7 @@ public class VendaController {
 	
 	@CrossOrigin
 	@PostMapping(path =  "/venda",consumes = MediaType.APPLICATION_JSON_VALUE)
-	public int cadastroNovaVenda(@RequestParam ProdutoDTO produtos) {
+	public int cadastroNovaVenda(@RequestBody ProdutoDTO produtos) {
 //		for (ProdutoDTO produtoDTO : produtos) {
 //			System.out.println(produtoDTO.getNome());
 //		}
