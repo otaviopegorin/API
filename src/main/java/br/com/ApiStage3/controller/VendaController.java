@@ -70,4 +70,11 @@ public class VendaController {
 		List<AuxItemVendaDto> list = testeRepository.getItensPedidoPorIdVenda(id);
 		return list;
 	}
+	
+	@CrossOrigin
+	@GetMapping("/concluirPedido/{id}")
+	public void concluirPedido(@PathVariable("id") int id) {
+		vendaService.concluirPedido(id);
+	}
+	
 }

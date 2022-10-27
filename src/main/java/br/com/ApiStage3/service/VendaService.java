@@ -83,7 +83,10 @@ public class VendaService {
 		return vendaRepository.getLucroDiario();
 	}
 
-	public void getPedidos() {
-		
+
+	public void concluirPedido(int id) {
+		Venda v = vendaRepository.getById(id);
+		v.setStatusVenda("CONCLUIDO");
+		vendaRepository.save(v);
 	}
 }

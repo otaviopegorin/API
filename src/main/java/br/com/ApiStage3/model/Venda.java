@@ -3,6 +3,7 @@ package br.com.ApiStage3.model;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -25,7 +26,8 @@ public class Venda {
 	private double preco;
 	private Boolean excluido = false;
 	private LocalDateTime dataExcluido;
-	private String statusVenda;
+	@Column(name = "status_venda")
+	private String statusVenda = "EM ANDAMENTO";
 
 	public List<Item_venda> getItens() {
 		return itens;

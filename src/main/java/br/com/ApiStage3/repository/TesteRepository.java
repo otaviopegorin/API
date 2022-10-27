@@ -21,6 +21,7 @@ public class TesteRepository {
 		Query query = entityManager.createQuery(
 				"select u.img_usuario, u.nomeUsuario, v.data_venda, v.id_venda from Usuario u "
 				+ "inner join u.vendas v "
+				+ " where v.statusVenda like 'EM ANDAMENTO'"
 				);
 		
 		List<AuxPedidoDto> resultList = query.getResultList();
