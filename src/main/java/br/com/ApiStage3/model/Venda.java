@@ -19,25 +19,53 @@ public class Venda {
 	private Integer id_venda;
 	@ManyToOne
 	private Usuario usuario;
-    @OneToMany(mappedBy = "venda", fetch = FetchType.LAZY)
-    private List<Item_venda> itens;
+	@OneToMany(mappedBy = "venda", fetch = FetchType.LAZY)
+	private List<Item_venda> itens;
 	private LocalDateTime data_venda;
 	private double preco;
 	private Boolean excluido = false;
 	private LocalDateTime dataExcluido;
+	private String statusVenda;
+
+	public List<Item_venda> getItens() {
+		return itens;
+	}
+
+	public void setItens(List<Item_venda> itens) {
+		this.itens = itens;
+	}
+
+	public String getStatusVenda() {
+		return statusVenda;
+	}
+
+	public void setStatusVenda(String statusVenda) {
+		this.statusVenda = statusVenda;
+	}
+
+	public Venda(Integer id_venda, Usuario usuario, List<Item_venda> itens, LocalDateTime data_venda, double preco,
+			Boolean excluido, LocalDateTime dataExcluido, String statusVenda) {
+		super();
+		this.id_venda = id_venda;
+		this.usuario = usuario;
+		this.itens = itens;
+		this.data_venda = data_venda;
+		this.preco = preco;
+		this.excluido = excluido;
+		this.dataExcluido = dataExcluido;
+		this.statusVenda = statusVenda;
+	}
 
 	public Venda() {
-		
+
 	}
-	
-	
+
 	public Venda(Usuario usuario, List<Item_venda> produtos, double preco) {
 		super();
 		this.usuario = usuario;
 		this.itens = produtos;
 		this.preco = preco;
 	}
-
 
 	public Venda(Integer id_venda, Usuario usuario, List<Item_venda> produtos, LocalDateTime data_venda, double preco,
 			Boolean excluido, LocalDateTime dataExcluido) {
@@ -50,15 +78,13 @@ public class Venda {
 		this.excluido = excluido;
 		this.dataExcluido = dataExcluido;
 	}
-	
-	
 
 	public Venda(Usuario usuario, double preco) {
 		super();
 		this.usuario = usuario;
 		this.preco = preco;
 	}
-	
+
 	public Integer getId_venda() {
 		return id_venda;
 	}
