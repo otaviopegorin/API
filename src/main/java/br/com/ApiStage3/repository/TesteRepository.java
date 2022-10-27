@@ -31,8 +31,8 @@ public class TesteRepository {
 	
 	public List<AuxItemVendaDto> getItensPedidoPorIdVenda(int id) {
 		Query query = entityManager.createQuery(
-				"select iv.quantidade,p.nome_produto from Item_venda iv  "
-				+ "inner join iv.produto "
+				"select iv.quantidade,p.nomeProduto from Item_venda iv  "
+				+ "inner join iv.produto p"
 				+ "where iv.venda = "+id
 				);
 		
