@@ -18,10 +18,8 @@ public class TesteRepository {
 
 	public List<AuxPedidoDto> get() {
 		Query query = entityManager.createQuery(
-				"select u.img_usuario, u.nomeUsuario, v.data_venda, iv.quantidade, p.nomeProduto, v.id_venda from Usuario u "
+				"select u.img_usuario, u.nomeUsuario, v.data_venda, v.id_venda from Usuario u "
 				+ "inner join u.vendas v "
-				+ "inner join v.itens iv "
-				+ "inner join iv.produto p "
 				);
 		
 		List<AuxPedidoDto> resultList = query.getResultList();
