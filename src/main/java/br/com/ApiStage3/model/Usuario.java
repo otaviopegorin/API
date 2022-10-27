@@ -16,7 +16,8 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id_usuario;
-	private String nome;
+	@Column(name = "nome_usuario")
+	private String nomeUsuario;
 	@Column(unique = true)
 	private String email;
 	@OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
@@ -33,7 +34,7 @@ public class Usuario {
 			Boolean recuperarSenha, Boolean adm, String img_usuario, boolean notificacao) {
 		super();
 		this.id_usuario = id_usuario;
-		this.nome = nome;
+		this.nomeUsuario = nome;
 		this.email = email;
 		this.vendas = pedidos;
 		this.senha = senha;
@@ -54,7 +55,7 @@ public class Usuario {
 
 	public Usuario(String nome, String email, String senha, String telefone, Boolean adm, Boolean recuperarSenha) {
 		super();
-		this.nome = nome;
+		this.nomeUsuario = nome;
 		this.email = email;
 		this.senha = senha;
 		this.telefone = telefone;
@@ -63,7 +64,7 @@ public class Usuario {
 	}
 
 	public Usuario(String nome, String email, String senha, Boolean recuperarsenha, Boolean adm) {
-		this.nome = nome;
+		this.nomeUsuario = nome;
 		this.email = email;
 		this.senha = senha;
 		this.recuperarSenha = recuperarsenha;
@@ -128,11 +129,11 @@ public class Usuario {
 	}
 
 	public String getNome() {
-		return nome;
+		return nomeUsuario;
 	}
 
 	public void setNome(String nome) {
-		this.nome = nome;
+		this.nomeUsuario = nome;
 	}
 
 	public String getEmail() {

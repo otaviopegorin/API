@@ -37,7 +37,7 @@ public class ProdutoService {
 	}
 	
 	public Produto getProdutoByName(String nome) {
-		Produto produto = produtoRepository.findByNome(nome);
+		Produto produto = produtoRepository.findByNomeProduto(nome);
 		return produto;
 	}
 

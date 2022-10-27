@@ -16,7 +16,8 @@ public class Produto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id_produto;
-	private String nome;
+	@Column(name = "nome_produto")
+	private String nomeProduto;
 	@OneToMany(mappedBy = "produto", fetch = FetchType.LAZY)
 	private List<Item_venda> itens;
 	private double preco;
@@ -33,7 +34,7 @@ public class Produto {
 	
 	public Produto(String nome, double preco, String categoria, String descricao, int qtd_estoque, String img_produto) {
 		super();
-		this.nome = nome;
+		this.nomeProduto = nome;
 		this.preco = preco;
 		this.categoria = categoria;
 		this.descricao = descricao;
@@ -45,7 +46,7 @@ public class Produto {
 			int qtd_estoque, Boolean excluido, String data_excluido, String img_produto) {
 		super();
 		this.id_produto = id_produto;
-		this.nome = nome;
+		this.nomeProduto = nome;
 		this.preco = preco;
 		this.categoria = categoria;
 		this.descricao = descricao;
@@ -73,11 +74,11 @@ public class Produto {
 	}
 
 	public String getNome() {
-		return nome;
+		return nomeProduto;
 	}
 
 	public void setNome(String nome) {
-		this.nome = nome;
+		this.nomeProduto = nome;
 	}
 
 	public double getPreco() {
@@ -137,7 +138,7 @@ public class Produto {
 	}
 
 	public ProdutoDTO toDTO() {
-		ProdutoDTO dto = new ProdutoDTO(id_produto, nome, preco, categoria, descricao, qtd_estoque, excluido, data_excluido, img_produto);
+		ProdutoDTO dto = new ProdutoDTO(id_produto, nomeProduto, preco, categoria, descricao, qtd_estoque, excluido, data_excluido, img_produto);
 		return dto;
 	}
 }
