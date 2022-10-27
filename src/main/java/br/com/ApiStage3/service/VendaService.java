@@ -84,16 +84,16 @@ public class VendaService {
 	}
 
 
-	public void finalizarPedido(int id, Boolean a) {
-		if(a) {
-			Venda v = vendaRepository.getById(id);
-			v.setStatusVenda("CONCLUIDO");
-			vendaRepository.save(v);
-		}else {
-			Venda v = vendaRepository.getById(id);
-			v.setStatusVenda("CANCELADO");
-			vendaRepository.save(v);
-		}
-		
+
+	public void concluirPedido(int id) {
+		Venda v = vendaRepository.getById(id);
+		v.setStatusVenda("CONCLUIDO");
+		vendaRepository.save(v);
+	}
+
+	public void cancelarPedido(int id) {
+		Venda v = vendaRepository.getById(id);
+		v.setStatusVenda("CANCELADO");
+		vendaRepository.save(v);
 	}
 }

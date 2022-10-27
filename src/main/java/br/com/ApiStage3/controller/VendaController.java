@@ -74,13 +74,13 @@ public class VendaController {
 	@CrossOrigin
 	@GetMapping("/concluirPedido/{id}")
 	public void concluirPedido(@PathVariable("id") int id) {
-		vendaService.finalizarPedido(id, true);
+		vendaService.concluirPedido(id);
 	}
 	
 	@CrossOrigin
 	@GetMapping("/cancelarPedido/{id}")
 	public void cancelarPedido(@PathVariable("id") int id) {
-		vendaService.finalizarPedido(id, false);
+		vendaService.cancelarPedido(id);
 	}
 	
 }
