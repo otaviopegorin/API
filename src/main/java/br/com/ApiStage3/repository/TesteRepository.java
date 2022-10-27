@@ -8,6 +8,7 @@ import javax.persistence.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import br.com.ApiStage3.model.AuxItemVendaDto;
 import br.com.ApiStage3.model.AuxPedidoDto;
 
 @Repository
@@ -23,6 +24,19 @@ public class TesteRepository {
 				);
 		
 		List<AuxPedidoDto> resultList = query.getResultList();
+		
+		System.out.println("teste "+ resultList);
+		return resultList;
+	}
+	
+	public List<AuxItemVendaDto> getItensPedidoPorIdVenda(int id) {
+		Query query = entityManager.createQuery(
+				"select iv.quantidade,p.nome_produto from Item_venda iv  "
+				+ "inner join iv.produto "
+				+ "where iv.venda = "+id
+				);
+		
+		List<AuxItemVendaDto> resultList = query.getResultList();
 		
 		System.out.println("teste "+ resultList);
 		return resultList;

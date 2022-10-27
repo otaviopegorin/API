@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.ApiStage3.model.AuxItemVendaDto;
 import br.com.ApiStage3.model.AuxItensVenda;
 import br.com.ApiStage3.model.AuxPedidoDto;
 import br.com.ApiStage3.model.VendaDTO;
@@ -24,8 +25,6 @@ public class VendaController {
 	@Autowired
 	private VendaService vendaService;
 	
-	@Autowired
-	private UsuarioService usuarioService;
 	@Autowired
 	private TesteRepository testeRepository;
 	
@@ -61,8 +60,14 @@ public class VendaController {
 	@CrossOrigin
 	@GetMapping("/pedidos")
 	public List<AuxPedidoDto> pedidos() {
-		
 		List<AuxPedidoDto> list = testeRepository.get();
+		return list;
+	}
+	
+	@CrossOrigin
+	@GetMapping("/itensVenda/{id}")
+	public List<AuxItemVendaDto> getItensVendaPorIdVenda(@PathVariable("id") int id) {
+		List<AuxItemVendaDto> list = testeRepository.getItensPedidoPorIdVenda(id);
 		return list;
 	}
 }
