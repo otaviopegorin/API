@@ -82,4 +82,8 @@ public class VendaService {
 	public double lucroDiario() {
 		return vendaRepository.getLucroDiario();
 	}
+
+	public void getPedidos() {
+		
+	}
 }

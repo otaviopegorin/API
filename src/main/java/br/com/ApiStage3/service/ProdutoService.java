@@ -65,8 +65,12 @@ public class ProdutoService {
 
 	public Boolean salvarProduto(Produto produto) {
 		try {
-			produtoRepository.save(produto);
-			return true;
+			if(verificaCategoria(produto.getCategoria())) {
+				produtoRepository.save(produto);
+				return true;
+			}else {
+				return false;
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;

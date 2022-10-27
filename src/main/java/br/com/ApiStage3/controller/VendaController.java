@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.ApiStage3.model.AuxItensVenda;
 import br.com.ApiStage3.model.ProdutoDTO;
 import br.com.ApiStage3.model.VendaDTO;
+import br.com.ApiStage3.repository.TesteRepository;
+import br.com.ApiStage3.service.UsuarioService;
 import br.com.ApiStage3.service.VendaService;
 
 @RestController()
@@ -22,6 +24,11 @@ public class VendaController {
 
 	@Autowired
 	private VendaService vendaService;
+	
+	@Autowired
+	private UsuarioService usuarioService;
+	@Autowired
+	private TesteRepository testeRepository;
 	
 	@CrossOrigin
 	@GetMapping("/vendas")
@@ -52,4 +59,11 @@ public class VendaController {
 		return vendaService.lucroDiario();
 	}
 	
+	@CrossOrigin
+	@GetMapping("/pedidos")
+	public List<Object> pedidos() {
+		
+		List<Object> list = testeRepository.get();
+		return list;
+	}
 }
