@@ -43,6 +43,19 @@ public class TesteRepository {
 		return resultList;
 	}
 
+	public List<AuxPedidoDto> getByEmail(String email) {
+		Query query = entityManager.createQuery(
+				"select u.img_usuario, u.nomeUsuario, v.data_venda, v.id_venda from Usuario u "
+				+ "inner join u.vendas v "
+				+ " where v.statusVenda like 'EM ANDAMENTO' and u.email like '"+email+"'"
+				);
+		
+		List<AuxPedidoDto> resultList = query.getResultList();
+		
+		System.out.println("teste "+ resultList);
+		return resultList;
+	}
+
 //	select u.img_usuario, u.nome, v.data_venda, iv.quantidade, p.nome, v.id_venda 
 //	from usuario u 
 //	inner join venda v on u.id_usuario = v.usuario_id_usuario

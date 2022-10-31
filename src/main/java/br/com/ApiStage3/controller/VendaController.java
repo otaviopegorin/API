@@ -65,6 +65,13 @@ public class VendaController {
 	}
 	
 	@CrossOrigin
+	@GetMapping("/pedidos/{email}")
+	public List<AuxPedidoDto> pedidosEmail(@PathVariable("email") String email) {
+		List<AuxPedidoDto> list = testeRepository.getByEmail(email);
+		return list;
+	}
+	
+	@CrossOrigin
 	@GetMapping("/itensVenda/{id}")
 	public List<AuxItemVendaDto> getItensVendaPorIdVenda(@PathVariable("id") int id) {
 		List<AuxItemVendaDto> list = testeRepository.getItensPedidoPorIdVenda(id);
