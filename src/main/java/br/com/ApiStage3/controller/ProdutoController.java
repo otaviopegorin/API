@@ -34,9 +34,16 @@ public class ProdutoController {
 
 	@CrossOrigin
 	@GetMapping("/produtos")
+	public List<ProdutoDTO> getProdutos() {
+		return produtoService.getProdutosComEstoque();
+	}
+	
+	@CrossOrigin
+	@GetMapping("/todosprodutos")
 	public List<ProdutoDTO> getAllProdutos() {
 		return produtoService.getAll();
 	}
+	
 
 	@CrossOrigin
 	@GetMapping(value = "/getProdutoByName/{name}")

@@ -16,9 +16,7 @@ public class ProdutoService {
 	@Autowired
 	private ProdutoRepository produtoRepository;
 
-
-
-	public List<ProdutoDTO> getAll() {
+	public List<ProdutoDTO> getProdutosComEstoque() {
 		List<ProdutoDTO> lista = new ArrayList<ProdutoDTO>();
 		List<Produto> produtos = produtoRepository.findAll();
 		produtos.forEach(a -> {
@@ -35,13 +33,12 @@ public class ProdutoService {
 		});
 		return produtosDTO;
 	}
-	
+
 	public Produto getProdutoByName(String nome) {
 		Produto produto = produtoRepository.findByNomeProduto(nome);
 		return produto;
 	}
 
-	
 	public List<ProdutoDTO> getByCategoria(String categoria) {
 		List<ProdutoDTO> lista = new ArrayList<ProdutoDTO>();
 		if (verificaCategoria(categoria)) {
@@ -65,10 +62,10 @@ public class ProdutoService {
 
 	public Boolean salvarProduto(Produto produto) {
 		try {
-			if(verificaCategoria(produto.getCategoria())) {
+			if (verificaCategoria(produto.getCategoria())) {
 				produtoRepository.save(produto);
 				return true;
-			}else {
+			} else {
 				return false;
 			}
 		} catch (Exception e) {
@@ -82,5 +79,13 @@ public class ProdutoService {
 		return p;
 	}
 
-	
+	public List<ProdutoDTO> getAll() {
+		List<ProdutoDTO> lista = new ArrayList<ProdutoDTO>();
+		List<Produto> produtos = produtoRepository.findAll();
+		produtos.forEach(a -> {
+			lista.add(a.toDTO());
+		});
+		return lista;
+	}
+
 }
