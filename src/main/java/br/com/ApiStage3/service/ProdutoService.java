@@ -81,7 +81,7 @@ public class ProdutoService {
 
 	public List<ProdutoDTO> getAll() {
 		List<ProdutoDTO> lista = new ArrayList<ProdutoDTO>();
-		List<Produto> produtos = produtoRepository.findAll();
+		List<Produto> produtos = produtoRepository.getAll();
 		produtos.forEach(a -> {
 			lista.add(a.toDTO());
 		});
