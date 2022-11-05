@@ -12,7 +12,7 @@ import br.com.ApiStage3.model.Produto;
 @Repository
 public interface ProdutoRepository extends JpaRepository<Produto, Integer> {
 	
-	@Query(value="SELECT * FROM PRODUTO WHERE excluido != true ", nativeQuery = true)
+	@Query(value="SELECT * FROM PRODUTO WHERE excluido != true and qtd_estoque != 0 ", nativeQuery = true)
 	List<Produto> findAll();
 	
 	@Query(value=" SELECT * FROM PRODUTO WHERE lower(nome) like lower(CONCAT('%',:nomeProduto,'%')) and excluido != true", nativeQuery = true)

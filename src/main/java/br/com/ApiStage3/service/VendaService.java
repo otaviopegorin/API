@@ -58,7 +58,8 @@ public class VendaService {
 			produtos.forEach(a ->
 			{
 				System.out.println(a.getNome());
-				Produto p = produtoService.getProdutoByName(a.getNome());
+				Produto p = produtoService.getProdutoById(a.getId().toString());
+				p.setQtd_estoque(p.getQtd_estoque()-a.getQuantidade());
 				Item_venda item = new Item_venda(p, a.getQuantidade(), a.getPreco());
 				item.setVenda(venda);
 				item_vendaRepository.save(item);
