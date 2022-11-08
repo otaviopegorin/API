@@ -6,7 +6,25 @@ public class AuxPedidoDto {
 	private String data_venda;
 	private String nomeUsuario;
 	private int id_venda;
+	private String statusVenda;
 	
+	public AuxPedidoDto(String img_usuario, String data_venda, String nomeUsuario, int id_venda, String statusVenda) {
+		super();
+		this.img_usuario = img_usuario;
+		this.data_venda = data_venda;
+		this.nomeUsuario = nomeUsuario;
+		this.id_venda = id_venda;
+		this.statusVenda = statusVenda;
+	}
+
+	public String getStatusVenda() {
+		return statusVenda;
+	}
+
+	public void setStatusVenda(String statusVenda) {
+		this.statusVenda = statusVenda;
+	}
+
 	public AuxPedidoDto() {}
 	
 	public AuxPedidoDto(String img_usuario, String nomeProduto, String data_venda, int quantidade, String nomeUsuario,

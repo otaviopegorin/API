@@ -16,7 +16,6 @@ import br.com.ApiStage3.model.AuxItensVenda;
 import br.com.ApiStage3.model.AuxPedidoDto;
 import br.com.ApiStage3.model.VendaDTO;
 import br.com.ApiStage3.repository.TesteRepository;
-import br.com.ApiStage3.service.UsuarioService;
 import br.com.ApiStage3.service.VendaService;
 
 @RestController()
@@ -59,8 +58,15 @@ public class VendaController {
 	
 	@CrossOrigin
 	@GetMapping("/pedidos")
+	public List<AuxPedidoDto> pedidosEmAndamento() {
+		List<AuxPedidoDto> list = testeRepository.getPedidosEmAndamento();
+		return list;
+	}
+	
+	@CrossOrigin
+	@GetMapping("/todospedidos")
 	public List<AuxPedidoDto> pedidos() {
-		List<AuxPedidoDto> list = testeRepository.get();
+		List<AuxPedidoDto> list = testeRepository.getPedidos();
 		return list;
 	}
 	

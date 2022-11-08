@@ -17,7 +17,19 @@ public class TesteRepository {
 	@Autowired
 	private EntityManager entityManager;
 
-	public List<AuxPedidoDto> get() {
+	public List<AuxPedidoDto> getPedidos() {
+		Query query = entityManager.createQuery(
+				"select u.img_usuario, u.nomeUsuario,u.email, v.data_venda, v.id_venda, v.statusVenda from Usuario u "
+				+ "inner join u.vendas v "
+				);
+		
+		List<AuxPedidoDto> resultList = query.getResultList();
+		
+		System.out.println("teste "+ resultList);
+		return resultList;
+	}
+	
+	public List<AuxPedidoDto> getPedidosEmAndamento() {
 		Query query = entityManager.createQuery(
 				"select u.img_usuario, u.nomeUsuario,u.email, v.data_venda, v.id_venda from Usuario u "
 				+ "inner join u.vendas v "
@@ -45,8 +57,10 @@ public class TesteRepository {
 
 	public List<AuxPedidoDto> getByEmail(String email) {
 		Query query = entityManager.createQuery(
-				"select u.img_usuario, u.nomeUsuario, v.data_venda, v.id_venda from Usuario u "
-				+ "inner join u.vendas v "
+				"select u.img_usuario, u.nomeUsuario, v.data_venda, v.id_venda, iv.quantidade, p.nomeProduto from Usuario u "
+				+ "inner join u.vendas v"
+				+ "inner join v.itens iv "
+				+ "inner joing iv.produto p"
 				+ " where v.statusVenda like 'EM ANDAMENTO' and u.email like '"+email+"'"
 				);
 		
