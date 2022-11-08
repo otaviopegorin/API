@@ -59,8 +59,8 @@ public class TesteRepository {
 		Query query = entityManager.createQuery(
 				"select u.img_usuario, u.nomeUsuario, v.data_venda, v.id_venda, iv.quantidade, p.nomeProduto from Usuario u "
 				+ "inner join u.vendas v"
-				+ "inner join v.itens iv "
-				+ "inner join iv.produto p"
+				+ "inner join u.vendas.itens iv "
+				+ "inner join u.vendas.itens.produto p"
 				+ " where v.statusVenda like 'EM ANDAMENTO' and u.email like '"+email+"'"
 				);
 		
