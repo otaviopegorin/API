@@ -60,7 +60,7 @@ public class TesteRepository {
 				"select u.img_usuario, u.nomeUsuario, v.data_venda, v.id_venda, iv.quantidade, p.nomeProduto from Usuario u "
 				+ "inner join u.vendas v"
 				+ "inner join v.itens iv "
-				+ "inner joing iv.produto p"
+				+ "inner join iv.produto p"
 				+ " where v.statusVenda like 'EM ANDAMENTO' and u.email like '"+email+"'"
 				);
 		
