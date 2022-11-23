@@ -21,7 +21,7 @@ public interface ProdutoRepository extends JpaRepository<Produto, Integer> {
 	@Query(value=" SELECT * FROM PRODUTO WHERE lower(nome) like lower(CONCAT('%',:nomeProduto,'%')) and excluido != true", nativeQuery = true)
 	List<Produto> findLikeName(@Param("nomeProduto") String nome);
 	
-	@Query(value="SELECT * FROM PRODUTO WHERE categoria = :categoria and excluido != true ", nativeQuery = true)
+	@Query(value="SELECT * FROM PRODUTO WHERE categoria = :categoria and excluido != true and qtd_estoque != 0", nativeQuery = true)
 	List<Produto> findByCategoria(@Param("categoria")String categoria);
 
 	Produto findByNomeProduto(String nome);
