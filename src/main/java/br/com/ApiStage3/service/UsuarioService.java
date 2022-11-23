@@ -187,7 +187,7 @@ public class UsuarioService {
     				+ "<tr>\r\n"
     				+ "<td style=\"\"><span style=\" font-family: 'Source Sans Pro', sans-serif; font-size:17px; line-height:21px; color:#141823\">\r\n"
     				+ "    <div><span style=\"color:#333333; font-weight:bold\">Esse é um email automatico</span></div>\r\n"
-    				+ "<p> Para cadastrar uma nova senha basta logar no app usando a seguinte senha:"+uuid.toString()+"</p>\r\n"
+    				+ "<p> Para cadastrar uma nova senha basta logar no app usando a seguinte senha:<label>"+uuid.toString()+"</label></p>\r\n"
     				+ "<h1> </h1>\r\n"
     				+ "<div><span style=\"color:#333333; font-weight:bold\">Não solicitou alteração?</span></div>\r\n"
     				+ "Se você não solicitou a alteração de sua senha, desconsidere este e-mail.</span></td>\r\n"
