@@ -57,7 +57,7 @@ public class TesteRepository {
 
 	public List<AuxPedidoDto> getByEmail(String email) {
 		Query query = entityManager.createQuery(
-				"select u.img_usuario, u.nomeUsuario, v.data_venda,v.id_venda, iv.quantidade,p.nomeProduto from Usuario u "
+				"select p.img_produto,u.img_usuario, u.nomeUsuario, v.data_venda,v.id_venda, iv.quantidade,p.nomeProduto from Usuario u "
 				+ "inner join u.vendas v "
 				+ "inner join v.itens iv "
 				+ "inner join iv.produto p"
