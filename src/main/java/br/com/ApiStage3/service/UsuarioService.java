@@ -50,12 +50,16 @@ public class UsuarioService {
 		return usuarioDTO;
 	}
 	
-	public Boolean salvaUsuario(Usuario usuario) {
+	public int salvaUsuario(Usuario usuario) {
 		if(usuario.getSenha() == null || usuario.getSenha() == "") {
 			Usuario usu = usuarioRepository.findByEmail(usuario.getEmail());
 			usu.setNotificacao(usuario.getNotificacao());
 			usuarioRepository.save(usu);
-			return true;
+			return 1;
+		}
+		Usuario u = usuarioRepository.findByEmail(usuario.getEmail());
+		if(u != null) {
+			return -1;
 		}
 		String strHash = codificaSenha(usuario.getSenha());
 		int a = gerador.nextInt(20);
@@ -63,10 +67,10 @@ public class UsuarioService {
 		usuario.setSenha(strHash);
 		try {
 			usuarioRepository.save(usuario);
-			return true;
+			return 1;
 		}catch(Exception e){
 			System.out.println("Erro ao salvar usuario: "+e.getMessage());
-			return false;
+			return 0;
 		}
 		
 	}

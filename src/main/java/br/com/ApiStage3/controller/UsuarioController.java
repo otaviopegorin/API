@@ -43,7 +43,7 @@ public class UsuarioController {
 	}
 	@CrossOrigin
 	@PostMapping("/usuario")
-	public Boolean criaUsuario(@RequestBody Usuario usuario) {
+	public int criaUsuario(@RequestBody Usuario usuario) {
 		return usuarioService.salvaUsuario(usuario);
 	} 
 //	{
