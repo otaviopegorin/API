@@ -34,7 +34,7 @@ public class TesteRepository {
 				"select u.img_usuario, u.nomeUsuario,u.email, v.data_venda, v.id_venda from Usuario u "
 				+ "inner join u.vendas v "
 				+ " where v.statusVenda like 'EM ANDAMENTO' "
-				+ " order by v.dataExcluido"
+				+ " order by v.data_venda"
 				);
 		
 		List<AuxPedidoDto> resultList = query.getResultList();
