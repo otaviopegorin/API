@@ -57,6 +57,9 @@ public class VendaService {
 			vendaRepository.save(venda);
 			produtos.forEach(a ->
 			{
+				if(a.getQuantidade() == 0) {
+					return;
+				}
 				System.out.println(a.getNome());
 				Produto p = produtoService.getProdutoById(a.getId().toString());
 				p.setQtd_estoque(p.getQtd_estoque()-a.getQuantidade());
