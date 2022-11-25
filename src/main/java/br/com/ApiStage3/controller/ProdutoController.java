@@ -81,7 +81,7 @@ public class ProdutoController {
 		p.setCategoria(categoria);
 		p.setDescricao(descricao);
 		p.setQtd_estoque(Integer.valueOf(qtd_estoque));
-		p.setPreco(Integer.valueOf(preco));
+		p.setPreco(Double.valueOf(preco));
 		System.out.println("teste" + foto.getOriginalFilename());
 		if (foto.getOriginalFilename().trim() == null || foto.getOriginalFilename().trim().equals("")
 				|| foto.getOriginalFilename().isEmpty() || foto.getOriginalFilename().trim().isEmpty()) {
