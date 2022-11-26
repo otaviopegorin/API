@@ -58,7 +58,7 @@ public class VendaController {
 	}
 	
 	@CrossOrigin
-	@GetMapping(path =  "/getStatusPedidoByIdVendaToday/{id}",consumes = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(path =  "/getStatusPedidoByIdVenda/{id}",consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String getStatusPedidoByIdVenda(@PathVariable("id") Integer id) {
 		return vendaService.getStatusById(id);
 	}
