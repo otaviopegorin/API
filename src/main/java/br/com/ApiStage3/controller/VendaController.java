@@ -57,11 +57,6 @@ public class VendaController {
 		return vendaService.cadastroNovaVenda(itensVenda.getEmail(), itensVenda.getProdutos(), itensVenda.getPreco());
 	}
 	
-	@CrossOrigin
-	@GetMapping(path =  "/getStatusPedidoByIdVenda/{id}",consumes = MediaType.APPLICATION_JSON_VALUE)
-	public String getStatusPedidoByIdVenda(@PathVariable("id") Integer id) {
-		return vendaService.getStatusById(id);
-	}
 	
 	@CrossOrigin
 	@GetMapping("novosPedidos")

@@ -45,7 +45,7 @@ public class TesteRepository {
 	
 	public List<AuxPedidoDto> getPedidosHoje() {
 		Query query = entityManager.createQuery(
-				"select u.img_usuario, u.nomeUsuario,u.email, v.data_venda, v.id_venda from Usuario u "
+				"select u.img_usuario, u.nomeUsuario,u.email, v.data_venda, v.id_venda, v.statusVenda from Usuario u "
 				+ "inner join u.vendas v "
 				+ " where DATE(v.data_venda) = DATE(NOW()) "
 				+ " order by v.data_venda desc"
@@ -87,7 +87,7 @@ public class TesteRepository {
 
 	public List<AuxPedidoDto> getUltimosPedidos() {
 		Query query = entityManager.createQuery(
-				"select u.img_usuario, u.nomeUsuario,u.email, v.data_venda, v.id_venda from Usuario u "
+				"select u.img_usuario, u.nomeUsuario,u.email, v.data_venda, v.id_venda, v.statusVenda from Usuario u "
 				+ " inner join u.vendas v "
 				+ " order by v.data_venda desc"
 				);

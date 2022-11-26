@@ -25,6 +25,6 @@ public interface VendaRepository extends JpaRepository<Venda, Integer> {
 	double getLucroDiario();
 
 	
-	@Query(value="SELECT status_venda FROM venda WHERE id_venda = :id_venda", nativeQuery = true)
+	@Query(value="SELECT * FROM venda WHERE id_venda = :id_venda", nativeQuery = true)
 	String getStatusById(@Param("id_venda") Integer id); 
 }

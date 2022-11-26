@@ -8,6 +8,7 @@ public class VendaDTO {
 	private double preco;
 	private Boolean excluido;
 	private LocalDateTime dataExcluido;
+	
 
 	public VendaDTO(LocalDateTime data_venda, double preco, boolean excluido, LocalDateTime dataExcluido) {
 		super();
