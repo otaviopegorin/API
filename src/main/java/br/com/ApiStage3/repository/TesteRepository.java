@@ -76,7 +76,7 @@ public class TesteRepository {
 				+ " inner join u.vendas v "
 				+ " inner join v.itens iv "
 				+ " inner join iv.produto p"
-				+ " where v.statusVenda like 'EM ANDAMENTO' and u.email like '"+email+"'"
+				+ " where u.email like '"+email+"'"
 				);
 		
 		List<AuxPedidoDto> resultList = query.getResultList();
