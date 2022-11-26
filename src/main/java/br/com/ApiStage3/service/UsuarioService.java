@@ -63,7 +63,7 @@ public class UsuarioService {
 		}
 		String strHash = codificaSenha(usuario.getSenha());
 		int a = gerador.nextInt(20);
-		usuario.setImg_usuario("http://projetoscti.com.br/projetoscti02/testesPegorin/files/icon"+a+".png");
+		usuario.setImg_usuario("https://projetoscti.com.br/projetoscti02/testesPegorin/files/icon"+a+".png");
 		usuario.setSenha(strHash);
 		try {
 			usuarioRepository.save(usuario);
