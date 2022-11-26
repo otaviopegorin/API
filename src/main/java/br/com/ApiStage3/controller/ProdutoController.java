@@ -64,7 +64,7 @@ public class ProdutoController {
 			@RequestParam String categoria, @RequestParam String descricao, @RequestParam String qtd_estoque,
 			@RequestParam MultipartFile foto) {
 		Produto p = new Produto(nome, Double.valueOf(preco), categoria, descricao, Integer.valueOf(qtd_estoque),
-				"http://projetoscti.com.br/projetoscti02/testesPegorin/" + UUID + foto.getOriginalFilename());
+				"https://projetoscti.com.br/projetoscti02/testesPegorin/" + UUID + foto.getOriginalFilename());
 		return produtoService.salvarProduto(p);
 	}
 
@@ -88,7 +88,7 @@ public class ProdutoController {
 			System.out.println("está vazio");
 		} else {
 			p.setImg_produto(
-					"http://projetoscti.com.br/projetoscti02/testesPegorin/" + UUID + foto.getOriginalFilename());
+					"https://projetoscti.com.br/projetoscti02/testesPegorin/" + UUID + foto.getOriginalFilename());
 		}
 
 		try {
