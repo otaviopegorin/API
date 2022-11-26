@@ -23,4 +23,8 @@ public interface VendaRepository extends JpaRepository<Venda, Integer> {
 
 	@Query(value="SELECT SUM(preco) FROM venda WHERE  DATE(data_venda) = DATE(NOW())", nativeQuery = true)
 	double getLucroDiario();
+
+	
+	@Query(value="SELECT status_venda FROM venda WHERE id_venda = :id_venda", nativeQuery = true)
+	String getStatusById(@Param("id_venda") Integer id); 
 }

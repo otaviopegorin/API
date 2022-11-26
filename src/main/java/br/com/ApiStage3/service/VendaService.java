@@ -100,4 +100,10 @@ public class VendaService {
 		v.setStatusVenda("CANCELADO");
 		vendaRepository.save(v);
 	}
+
+	public String getStatusById(Integer id) {
+		String s = vendaRepository.getStatusById(id);
+		return s;
+	}
+
 }

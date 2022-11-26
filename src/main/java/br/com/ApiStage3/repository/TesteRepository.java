@@ -43,6 +43,20 @@ public class TesteRepository {
 		return resultList;
 	}
 	
+	public List<AuxPedidoDto> getPedidosHoje() {
+		Query query = entityManager.createQuery(
+				"select u.img_usuario, u.nomeUsuario,u.email, v.data_venda, v.id_venda from Usuario u "
+				+ "inner join u.vendas v "
+				+ " where DATE(v.data_venda) = DATE(NOW()) "
+				+ " order by v.data_venda desc"
+				);
+		
+		List<AuxPedidoDto> resultList = query.getResultList();
+		
+		System.out.println("teste "+ resultList);
+		return resultList;
+	}
+	
 	public List<AuxItemVendaDto> getItensPedidoPorIdVenda(int id) {
 		Query query = entityManager.createQuery(
 				"select iv.quantidade,p.nomeProduto from Item_venda iv  "
@@ -59,10 +73,24 @@ public class TesteRepository {
 	public List<AuxPedidoDto> getByEmail(String email) {
 		Query query = entityManager.createQuery(
 				"select p.img_produto,u.img_usuario, u.nomeUsuario, v.data_venda,v.id_venda, iv.quantidade,p.nomeProduto from Usuario u "
-				+ "inner join u.vendas v "
-				+ "inner join v.itens iv "
-				+ "inner join iv.produto p"
+				+ " inner join u.vendas v "
+				+ " inner join v.itens iv "
+				+ " inner join iv.produto p"
 				+ " where v.statusVenda like 'EM ANDAMENTO' and u.email like '"+email+"'"
+				);
+		
+		List<AuxPedidoDto> resultList = query.getResultList();
+		
+		System.out.println("teste "+ resultList);
+		return resultList;
+	}
+
+	public List<AuxPedidoDto> getUltimosPedidos() {
+		Query query = entityManager.createQuery(
+				"select u.img_usuario, u.nomeUsuario,u.email, v.data_venda, v.id_venda from Usuario u "
+				+ " inner join u.vendas v "
+				+ " LIMIT 25 "
+				+ " order by v.data_venda desc"
 				);
 		
 		List<AuxPedidoDto> resultList = query.getResultList();

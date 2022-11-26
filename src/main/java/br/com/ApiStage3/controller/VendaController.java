@@ -32,6 +32,19 @@ public class VendaController {
 	public List<VendaDTO> getAllVendas() {
 		return vendaService.getAll();
 	}
+	
+	@CrossOrigin
+	@GetMapping("/pedidosHoje")
+	public List<AuxPedidoDto> getPedidosHoje() {
+		return testeRepository.getPedidosHoje();
+	}
+	
+	@CrossOrigin
+	@GetMapping("/ultimosPedidos")
+	public List<AuxPedidoDto> getUltimosPedidos() {
+		return testeRepository.getUltimosPedidos();
+	}
+	
 	@CrossOrigin
 	@GetMapping(value="/vendas/{id}")
 	public List<VendaDTO> getAllUsuarios(@PathVariable("id") Integer id) {
@@ -42,6 +55,12 @@ public class VendaController {
 	@PostMapping(path =  "/venda",consumes = MediaType.APPLICATION_JSON_VALUE)
 	public int cadastroNovaVenda(@RequestBody AuxItensVenda itensVenda) {
 		return vendaService.cadastroNovaVenda(itensVenda.getEmail(), itensVenda.getProdutos(), itensVenda.getPreco());
+	}
+	
+	@CrossOrigin
+	@GetMapping(path =  "/getStatusPedidoByIdVendaToday/{id}",consumes = MediaType.APPLICATION_JSON_VALUE)
+	public String getStatusPedidoByIdVenda(@PathVariable("id") Integer id) {
+		return vendaService.getStatusById(id);
 	}
 	
 	@CrossOrigin
