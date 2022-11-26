@@ -21,7 +21,7 @@ public interface VendaRepository extends JpaRepository<Venda, Integer> {
 	@Query(value=" SELECT COUNT(id_venda) FROM venda where excluido = false ", nativeQuery = true)
 	int getNumeroPedidos();
 
-	@Query(value="SELECT SUM(preco) FROM venda WHERE  DATE(data_venda) = DATE(NOW())", nativeQuery = true)
+	@Query(value="SELECT SUM(preco) FROM venda WHERE DATE(data_venda) = DATE(NOW())", nativeQuery = true)
 	double getLucroDiario();
 
 	
