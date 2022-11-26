@@ -87,7 +87,7 @@ public class TesteRepository {
 
 	public List<AuxPedidoDto> getUltimosPedidos() {
 		Query query = entityManager.createQuery(
-				"select u.img_usuario, u.nomeUsuario,u.email, v.data_venda, v.id_venda TOP 20 from Usuario u "
+				"select u.img_usuario, u.nomeUsuario,u.email, v.data_venda, v.id_venda from Usuario u "
 				+ " inner join u.vendas v "
 				+ " order by v.data_venda desc"
 				);
